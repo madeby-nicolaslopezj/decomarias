@@ -1,0 +1,31 @@
+<template name="home">
+  <br>
+  <div class="container">
+    {{> bannerTop }}
+    <div class="row">
+      
+    </div>
+    <div class="row">
+      <div class="col s12 m9">
+        {{# each topCategories }}
+          <p><a href="{{ pathFor 'categories.show' }}" class="btn">{{ label }}</a></p>
+        {{/ each }}
+      </div>
+      <div class="col s12 m3">
+        {{> bannerSide }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="bannerTop">
+  <div class="row">
+    <img class="col s12" src="{{ dict 'banners.top.url' }}">
+  </div>
+</template>
+
+<template name="bannerSide">
+  <div class="row">
+    <img class="col s12" src="{{ dict 'banners.side.url' }}">
+  </div>
+</template>

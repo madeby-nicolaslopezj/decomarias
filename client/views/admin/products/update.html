@@ -1,0 +1,20 @@
+<template name="adminProductsUpdate">
+  {{# Layout template="orionMaterializeContentContainer" }}
+    {{# Layout template="orionMaterializeHeaderContainer" }}
+      Editar Producto
+    {{/ Layout }}
+    {{# if currentUser.hasRole 'admin' }}
+      {{> quickForm collection=collection doc=item id="orionMaterializeCollectionsUpdateForm" type="update" buttonContent=false }}
+    {{ else }}
+      {{> quickForm collection=collection doc=item id="orionMaterializeCollectionsUpdateForm" type="update" buttonContent=false omitFields="storeId" }}
+    {{/ if }}
+    
+  {{/ Layout }}
+  {{# Layout template="orionMaterializeButtonsContainer" }}
+      <a href="{{ collection.indexPath }}">Volver</a>
+      {{# if item.canShowRemove }}
+        <a class="red-text" href="{{ collection.deletePath item._id }}">Borrar</a>
+      {{/ if }}
+      <a class="light-blue-text text-accent-4 save-btn" href="#">Guardar</a>
+  {{/ Layout }}
+</template>

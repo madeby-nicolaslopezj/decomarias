@@ -1,0 +1,19 @@
+<template name="adminProductsCreate">
+  {{# if collection.canShowCreate }}
+    {{# Layout template="orionMaterializeContentContainer" }}
+      {{# Layout template="orionMaterializeHeaderContainer" }}
+        Crear producto
+      {{/ Layout }}
+      {{# if currentUser.hasRole 'admin' }}
+        {{> quickForm collection=collection id="orionMaterializeCollectionsCreateForm" type="insert" buttonContent=false }}
+      {{ else }}
+        {{> quickForm collection=collection id="orionMaterializeCollectionsCreateForm" type="insert" buttonContent=false omitFields="storeId" }}
+      {{/ if }}
+      
+    {{/ Layout }}
+    {{# Layout template="orionMaterializeButtonsContainer" }}
+      <a href="{{ collection.indexPath }}">Cancelar</a>
+      <a class="light-blue-text text-accent-4 create-btn" href="#">Crear</a>
+    {{/ Layout }}
+  {{/ if }}
+</template>

@@ -1,0 +1,30 @@
+<template name="categoriesShow">
+  <div class="category">
+    <div class="parallax-container">
+      <div class="parallax">
+        <img src="{{ currentCategory.image.url }}">
+      </div>
+    </div>
+    <div class="teal tabs-container">
+      <div class="container">
+        <ul class="tabs teal">
+          {{# each subcategories }}
+            <li class="tab"><a subcategory="{{ this }}" href="#">{{ this }}</a></li>
+          {{/ each }}
+        </ul>
+      </div>
+    </div>
+    <div class="section">
+
+      <div class="container">
+        {{# each categories }}
+          <p>
+            {{ category }}
+            {{ subcategory }}
+            {{ type }}
+          </p>
+        {{/ each }}
+      </div>
+    </div>
+  </div>
+</template>

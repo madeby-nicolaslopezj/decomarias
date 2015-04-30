@@ -1,0 +1,141 @@
+<template name="productsShow">
+  <div class="product">
+    <div class="parallax-container">
+      <div class="parallax"><img src="{{ product.store.backgroundImage.url }}"></div>
+    </div>
+    <div class="section">
+      <div class="container">
+        {{# with product }}
+          <div class="row">
+            <div class="col s12 m8">
+              <h2>
+                {{ name }}
+              </h2>
+              
+              <img class="z-depth-1 responsive-img materialboxed" src="{{ image.url }}">
+              <br>
+              <div class="row">
+                {{# if image1 }}
+                  <div class="col s3">
+                    <img class="z-depth-1 responsive-img materialboxed" src="{{ image1.url }}">
+                  </div>
+                {{/ if }}
+                {{# if image2 }}
+                  <div class="col s3">
+                    <img class="z-depth-1 responsive-img materialboxed" src="{{ image2.url }}">
+                  </div>
+                {{/ if }}
+                {{# if image3 }}
+                  <div class="col s3">
+                    <img class="z-depth-1 responsive-img materialboxed" src="{{ image3.url }}">
+                  </div>
+                {{/ if }}
+                {{# if image4 }}
+                  <div class="col s3">
+                    <img class="z-depth-1 responsive-img materialboxed" src="{{ image4.url }}">
+                  </div>
+                {{/ if }}
+              </div>
+
+              <div class="row">
+                <div class="col s12">
+                  <a class='dropdown-button btn' href='#' data-activates='dropdown-add-to-project'>
+                    <i class="mdi-av-playlist-add left"></i>
+                    Agregar a Proyecto
+                  </a>
+                  <ul id='dropdown-add-to-project' class='dropdown-content'>
+                    {{# each currentUser.projects }}
+                      {{# unless hasProduct ../_id }}
+                        <li><a href="#" class="btn-add-to-project">{{ name }}</a></li>
+                      {{/ unless }}
+                    {{/ each }}
+                    <li class="divider"></li>
+                    <li><a href="{{ pathFor 'collections.projects.create' }}">Crear Proyecto</a></li>
+                  </ul>
+
+                  {{# if isInFavorites currentUser._id }}
+                    <a class='btn remove-from-favorites-btn red' href='#'>
+                      <i class="mdi-action-favorite left"></i>
+                      Remover de mis favoritos
+                    </a>
+                  {{ else }}
+                    <a class='btn add-to-favorites-btn red' href='#'>
+                      <i class="mdi-action-favorite left"></i>
+                      Agregar a mis favoritos
+                    </a>
+                  {{/ if }}
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <div class="card-panel">
+                <p>
+                  <b>Detalles:</b><br>
+                  {{ description }}
+                </p>
+                <div class="divider"></div>
+                <p>
+                  <b>Precio:</b><br>
+                  ${{ price }}
+                </p>
+                <div class="divider"></div>
+                <p>
+                  <b>Dimensiones:</b><br>
+                  {{ dimensions }}
+                </p>
+                <div class="divider"></div>
+                <p>
+                  <b>Materialidad:</b><br>
+                  {{ material }}
+                </p>
+              </div>
+              {{# with store }}
+                <div class="card-panel">
+                  <p>
+                    <b>Tienda:</b><br>
+                    {{ name }}
+                  </p>
+                  <div class="divider"></div>
+                  <p>
+                    <b>Teléfono:</b><br>
+                    {{ phone }}
+                  </p>
+                  <div class="divider"></div>
+                  <p>
+                    <b>Dirección:</b><br>
+                    {{ direction }}
+                  </p>
+                  {{# if website }}
+                  <div class="divider"></div>
+                  <p>
+                    <b>Website:</b><br>
+                    <a href="{{ website }}">{{ website }}</a>
+                  </p>
+                  {{/ if }}
+                </div>
+              {{/ with }}
+              {{# each currentUser.projects }}
+                {{# if hasProduct ../_id }}
+                  <div class="card-panel">
+                    <p>
+                      <b>En proyecto:</b><br>
+                      {{ name }}
+                    </p>
+                    {{# if budget }}
+                    <p>
+                      <b>Presupuesto</b><br>
+                      ${{ budget }}
+                    </p>
+                    {{/ if }}
+                  </div>
+                {{/ if }}
+              {{/ each }}
+            </div>
+
+          </div>
+        {{/ with }}
+      </div>
+    </div>
+  </div>
+  
+</template>

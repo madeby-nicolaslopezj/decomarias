@@ -1,0 +1,12 @@
+<template name="adminProjectsUpdate">
+  {{# Layout template="orionMaterializeContentContainer" }}
+    {{# Layout template="orionMaterializeHeaderContainer" }}
+      Editar Proyecto
+    {{/ Layout }}
+    {{> quickForm collection=collection doc=item id="orionMaterializeCollectionsUpdateForm" type="update" buttonContent=false omitFields="products" }}
+  {{/ Layout }}
+  {{# Layout template="orionMaterializeButtonsContainer" }}
+      <a href="{{ collection.indexPath }}">Volver</a>
+      <a class="light-blue-text text-accent-4 save-btn" href="#">Guardar</a>
+  {{/ Layout }}
+</template>

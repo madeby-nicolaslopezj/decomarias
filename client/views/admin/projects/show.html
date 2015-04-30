@@ -1,0 +1,44 @@
+<template name="collectionsProjectsShow">
+  {{# with project }}
+    {{# Layout template="orionMaterializeContentContainer" }}
+      {{# Layout template="orionMaterializeHeaderContainer" }}
+        {{ name }}
+      {{/ Layout }}
+      <div class="row">
+        <div class="col s6">
+          {{# if budget }}Presupuesto: ${{ budget }} - {{/ if }}
+          Total: ${{ cost }}
+        </div>
+        <div class="col s6">
+          
+        </div>
+      </div>
+
+      <div class="row">
+        {{# each getProducts }}
+          <div class="col s6 m4">
+            <a href="{{ pathFor 'products.show' }}">
+              <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img src="{{ image.url }}">
+                </div>
+                <div class="card-content">
+                  <span class="card-title grey-text text-darken-4">{{ name }}</span>
+                  <p class="grey-text text-darken-4">{{ description }}</p>
+                  <p class="grey-text text-darken-4">${{ price }}</p>
+                </div>
+                <div class="card-action">
+                  <a href="#" class="btn-remove-from-project red-text">Remover del projecto</a>
+                </div>
+              </div>
+            </a>
+          </div>
+        {{/ each }}
+      </div>
+    {{/ Layout }}
+
+    {{# Layout template="orionMaterializeButtonsContainer" }}
+        <a href="{{ pathFor 'collections.projects.index' }}">Volver</a>
+    {{/ Layout }}
+  {{/ with }}
+</template>

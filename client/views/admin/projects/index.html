@@ -1,0 +1,27 @@
+<template name="adminProjectsIndex">
+  {{# Layout template="orionMaterializeContentContainer" }}
+    {{# Layout template="orionMaterializeHeaderContainer" }}
+      Mis Proyectos
+    {{/ Layout }}
+    <div class="row">
+      {{# each projects }}
+        <div class="col s12 m6">
+          <div class="card white">
+            <div class="card-content grey-text text-darken-4">
+              <span class="card-title grey-text text-darken-4">{{ name }}</span>
+              <p><b>Presupuesto: </b>${{ budget }}</p>
+            </div>
+            <div class="card-action">
+              <a href="{{ pathFor 'collections.projects.show' }}" class="light-blue-text text-accent-4">Ver</a>
+              <a href="{{ pathFor 'collections.projects.update' }}" class="">Editar</a>
+              <a href="{{ pathFor 'collections.projects.delete' }}" class="red-text">Borrar</a>
+            </div>
+          </div>
+        </div>
+      {{/ each }}
+    </div>
+  {{/ Layout }}
+  {{# Layout template="orionMaterializeButtonsContainer" }}
+    <a class="light-blue-text text-accent-4" href="{{ pathFor 'collections.projects.create' }}">Crear</a>
+  {{/ Layout }}
+</template>

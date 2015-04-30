@@ -1,0 +1,13 @@
+<template name="header">
+  <nav class="header teal">
+    <div class="nav-wrapper container">
+      <a href="{{ pathFor 'home' }}" class="brand-logo">
+        Decomarías
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="{{ pathFor 'products.categories' }}"><i class="mdi-action-view-module"></i></a></li>
+        <li><a href="{{ pathFor 'myAccount.index' }}"><i class="mdi-action-settings"></i></a></li>
+      </ul>
+    </div>
+  </nav>
+</template>

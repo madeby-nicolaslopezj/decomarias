@@ -1,0 +1,12 @@
+<template name="adminProjectsCreate">
+  {{# Layout template="orionMaterializeContentContainer" }}
+    {{# Layout template="orionMaterializeHeaderContainer" }}
+      Crear un proyecto
+    {{/ Layout }}
+    {{> quickForm collection=collection id="orionMaterializeCollectionsCreateForm" type="insert" buttonContent=false omitFields="products" }}
+  {{/ Layout }}
+  {{# Layout template="orionMaterializeButtonsContainer" }}
+    <a href="{{ collection.indexPath }}">Volver</a>
+    <a class="light-blue-text text-accent-4 create-btn" href="#">Crear</a>
+  {{/ Layout }}
+</template>

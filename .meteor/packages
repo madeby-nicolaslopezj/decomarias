@@ -6,3 +6,13 @@
 
 meteor-platform
 materialize:materialize
+orionjs:core
+orionjs:materialize
+accounts-password
+orionjs:filesystem
+orionjs:s3
+orionjs:file-attribute
+orionjs:relationships
+reywood:publish-composite
+dburles:collection-helpers
+less
