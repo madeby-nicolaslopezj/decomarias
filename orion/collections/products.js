@@ -3,14 +3,13 @@ Products.attachSchema(new SimpleSchema({
     type: String,
     label: 'Nombre'
   },
-  category: orion.attribute('hasOne', { label: 'Categoría' }, {
+  category: orion.attribute('hasMany', { label: 'Categoría' }, {
     collection: Categories,
     publicationName: 'productsPosts',
     titleField: 'type',
     aditionalFields: ['category', 'subcategory'],
     render: {
       item: function(item, escape) {
-        console.log(item);
         return '<div class="product-category">' +
         '<span class="category">' + escape(item['category']) + ' > </span>' +
         '<span class="subcategory">' + escape(item['subcategory']) + ' > </span>' +

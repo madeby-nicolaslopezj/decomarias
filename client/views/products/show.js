@@ -4,8 +4,8 @@ Template.productsShow.onRendered(function() {
     Products.findOne(Router.current().params._id);
     Tracker.afterFlush(function () {
       $('.materialboxed').materialbox();
-      this.$('.parallax').parallax();
-        $('.dropdown-button').dropdown();
+      //this.$('.parallax').parallax();
+      $('.dropdown-button').dropdown();
     });
   })
 })

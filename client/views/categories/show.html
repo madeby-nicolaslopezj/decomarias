@@ -5,25 +5,56 @@
         <img src="{{ currentCategory.image.url }}">
       </div>
     </div>
+    {{# if shouldShowTabs }}
     <div class="teal tabs-container">
       <div class="container">
         <ul class="tabs teal">
           {{# each subcategories }}
-            <li class="tab"><a subcategory="{{ this }}" href="#">{{ this }}</a></li>
+            <li class="tab {{ isSubcategoryActive }}"><a subcategory="{{ this }}" href="#">{{ this }}</a></li>
           {{/ each }}
         </ul>
       </div>
     </div>
+    {{/ if }}
     <div class="section">
 
-      <div class="container">
-        {{# each categories }}
-          <p>
-            {{ category }}
-            {{ subcategory }}
-            {{ type }}
-          </p>
-        {{/ each }}
+      <div class="">
+        <div class="row masonry">
+          <div class="col s12 m6 l3">
+            <div class="card-panel">
+              <p>Tipos</p>
+              {{# each availableTypes }}
+                <p>
+                  <span class="child-category-box">
+                    {{# if isTypeSelected }}
+                      <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}" checked="checked" />
+                    {{ else }}
+                      <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}"/>
+                    {{/ if }}
+                    <label for="filled-in-box-{{ _id }}">{{ type }}</label>
+                  </span>
+                </p>
+              {{/ each }}
+            </div>
+          </div>
+          {{# each products }}
+            <div class="col s12 m6 l3">
+              <a href="{{ pathFor 'products.show' }}">
+                <div class="card">
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <img src="{{ image.url }}">
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title grey-text text-darken-4">{{ name }}</span>
+                    <p class="grey-text text-darken-4">{{ description }}</p>
+                    <p class="grey-text text-darken-4">${{ format price }}</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {{/ each }}
+        </div>
+        
       </div>
     </div>
   </div>

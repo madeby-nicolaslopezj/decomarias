@@ -16,3 +16,6 @@ orionjs:relationships
 reywood:publish-composite
 dburles:collection-helpers
 less
+digilord:faker
+iamkevingreen:imagesloaded
+sjors:meteor-masonry

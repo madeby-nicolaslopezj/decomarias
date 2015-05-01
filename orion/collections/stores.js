@@ -10,6 +10,10 @@ Stores.attachSchema(new SimpleSchema({
     type: String,
     label: 'Teléfono'
   },
+  email: {
+    type: String,
+    label: 'Email'
+  },
   direction: {
     type: String,
     label: 'Dirección'

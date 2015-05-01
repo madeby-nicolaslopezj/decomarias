@@ -8,6 +8,27 @@ Router.route('/producto/:_id', {
   layoutTemplate: 'layout'
 });
 
+Router.route('/categorias', {
+  name: 'categories.index',
+  layoutTemplate: 'layout'
+});
+
+Router.route('/categorias/:value', {
+  name: 'categories.show',
+  layoutTemplate: 'layout'
+});
+
+
+
+
+
+
+
+
+/**
+ * Admin
+ */
+
 Router.route('/admin/projects/:_id/show', {
   name: 'collections.projects.show',
   layoutTemplate: 'orionMaterializeLayout'
@@ -19,11 +40,6 @@ Router.route('/admin/store', {
   waitOn: function() {
     return Meteor.subscribe('myStore');
   }
-});
-
-Router.route('/categorias/:value', {
-  name: 'categories.show',
-  layoutTemplate: 'layout'
 });
 
 orion.addLink({

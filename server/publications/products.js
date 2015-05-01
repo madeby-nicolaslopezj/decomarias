@@ -13,3 +13,8 @@ Meteor.publishComposite('product', function(productId) {
     ]
   }
 });
+
+Meteor.publish('productsByCategory', function (ids) {
+  check(ids, [String]);
+  return Products.find({ category: { $in: ids } });
+});
