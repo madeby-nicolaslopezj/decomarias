@@ -24,7 +24,7 @@
             <div class="card-panel">
               <p>Tipos</p>
               {{# each availableTypes }}
-                <p>
+                <p class="types">
                   <span class="child-category-box">
                     {{# if isTypeSelected }}
                       <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}" checked="checked" />
@@ -32,6 +32,19 @@
                       <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}"/>
                     {{/ if }}
                     <label for="filled-in-box-{{ _id }}">{{ type }}</label>
+                  </span>
+                </p>
+              {{/ each }}
+              <p>Precios</p>
+              {{# each availablePrices }}
+                <p class="prices">
+                  <span class="child-category-box">
+                    {{# if isPriceSelected }}
+                      <input category="{{ identifier }}" type="checkbox" class="filled-in" id="filled-in-box-{{ identifier }}" checked="checked" />
+                    {{ else }}
+                      <input category="{{ identifier }}" type="checkbox" class="filled-in" id="filled-in-box-{{ identifier }}"/>
+                    {{/ if }}
+                    <label for="filled-in-box-{{ identifier }}">{{ label }}</label>
                   </span>
                 </p>
               {{/ each }}

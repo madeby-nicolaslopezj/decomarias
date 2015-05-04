@@ -9,9 +9,9 @@ Template.storesShow.onRendered(function() {
     Tracker.afterFlush(function () {
       var msnry = new Masonry(container, { itemSelector: '.col' });
       $('.masonry .col').imagesLoaded()
-      .progress(function() {
-        var msnry = new Masonry(container, { itemSelector: '.col' });
-      })
+        .always(function() {
+          var msnry = new Masonry(container, { itemSelector: '.col' });
+        })
     });
   })
 })
