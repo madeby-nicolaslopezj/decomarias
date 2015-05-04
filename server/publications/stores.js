@@ -7,3 +7,8 @@ Meteor.publish('myStore', function() {
   }
   return Stores.find({ owner: this.userId });
 })
+
+Meteor.publish('store', function(storeId) {
+  check(storeId, String);
+  return [Stores.find(storeId), Products.find({ storeId: storeId })];
+})

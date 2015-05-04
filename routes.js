@@ -19,9 +19,15 @@ Router.route('/categorias/:value', {
 });
 
 
+Router.route('/tiendas/:_id', {
+  name: 'stores.show',
+  layoutTemplate: 'layout'
+});
 
-
-
+Router.route('/disenadores', {
+  name: 'designers.index',
+  layoutTemplate: 'layout'
+});
 
 
 

@@ -8,9 +8,9 @@
     <div class="section">
       <div class="container">
         {{# with product }}
-          <h3>
+          <h1 class="page-title">
             {{ name }}
-          </h3>
+          </h1>
           <div class="row">
             <div class="col s12 m8">
               <img class="product-main-image responsive-img materialboxed" src="{{ image.url }}">
@@ -84,7 +84,11 @@
 
               <div class="divider"></div>
               {{# with store }}
-                <h5>{{ name }}</h5>
+                <h5>
+                  <a class="grey-text text-darken-4" href="{{ pathFor 'stores.show' }}">
+                    {{ name }}
+                  </a>
+                </h5>
                 <p class="description-with-icon">
                   <i class="mdi-communication-phone"></i>
                   {{ phone }}
@@ -110,11 +114,23 @@
               {{# each currentUser.projects }}
                 {{# if hasProduct ../_id }}
                   <div class="divider"></div>
-                  <h5>{{ name }}</h5>
+                  <h5>
+                    <a class="grey-text text-darken-4" href="{{ pathFor 'collections.projects.show' }}">
+                      {{ name }}
+                    </a>
+                  </h5>
+                  <p>
+                    {{ numberOfProducts }}
+                  </p>
                   {{# if budget }}
                     <p class="description-with-icon">
                       <i class="mdi-editor-attach-money"></i>
-                      {{ format budget }}
+                      {{ format cost }} / {{ format budget }}
+                    </p>
+                  {{ else }}
+                    <p class="description-with-icon">
+                      <i class="mdi-editor-attach-money"></i>
+                      {{ format cost }}
                     </p>
                   {{/ if }}
                 {{/ if }}

@@ -1,5 +1,17 @@
-Meteor.publish(null, function () {
-  return Projects.find({ userId: this.userId });
+Meteor.publishComposite(null, function() {
+  var userId = this.userId;
+  return {
+    find: function() {
+        return Projects.find({ userId: userId });
+    },
+    children: [
+      {
+        find: function(project) {
+          return Products.find({ _id: { $in: (project.products || []) } }, { fields: { name: 1, price: 1 } });
+        }
+      }
+    ]
+  }
 });
 
 Meteor.publishComposite('projectDetail', function(projectId) {

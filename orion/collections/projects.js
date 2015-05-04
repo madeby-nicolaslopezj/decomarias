@@ -28,5 +28,12 @@ Projects.helpers({
     return _.reduce(this.getProducts().fetch(), function(memo, item){
       return memo + item.price;
     }, 0)
+  },
+  numberOfProducts: function() {
+    var count = (this.products && this.products.length) || 0;
+    if (count == 1){
+      return '1 producto';
+    }
+    return count + ' productos';
   }
 });
