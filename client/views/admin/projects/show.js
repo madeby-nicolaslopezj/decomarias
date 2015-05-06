@@ -1,5 +1,18 @@
 Template.collectionsProjectsShow.onRendered(function() {
   this.subscribe('projectDetail', Router.current().params._id);
+
+  var container = document.querySelector('.masonry');
+  this.autorun(function() {
+    Projects.findOne(Router.current().params._id).getProducts().count();
+    Tracker.afterFlush(function () {
+      var msnry = new Masonry(container, { itemSelector: '.col' });
+      Meteor.setTimeout(function() {
+        $('.masonry .col').imagesLoaded(function() {
+          var msnry = new Masonry(container, { itemSelector: '.col' });
+        })
+      }, 20);
+    });
+  })
 })
 
 Template.collectionsProjectsShow.helpers({

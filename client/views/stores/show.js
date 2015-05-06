@@ -8,10 +8,12 @@ Template.storesShow.onRendered(function() {
      Products.find({ storeId: Router.current().params._id }).count();
     Tracker.afterFlush(function () {
       var msnry = new Masonry(container, { itemSelector: '.col' });
-      $('.masonry .col').imagesLoaded()
+      Meteor.setTimeout(function() {
+        $('.masonry .col').imagesLoaded()
         .always(function() {
           var msnry = new Masonry(container, { itemSelector: '.col' });
         })
+      }, 50);
     });
   })
 })

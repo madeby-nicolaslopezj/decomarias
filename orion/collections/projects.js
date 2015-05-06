@@ -26,7 +26,7 @@ Projects.helpers({
   },
   cost: function() {
     return _.reduce(this.getProducts().fetch(), function(memo, item){
-      return memo + item.price;
+      return memo + (item.price ? item.price : 0);
     }, 0)
   },
   numberOfProducts: function() {

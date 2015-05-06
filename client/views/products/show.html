@@ -69,7 +69,9 @@
               </div>
             </div>
             <div class="col s12 m4">
-              <h4>${{ format price }}</h4>
+              {{# if price }}
+                <h4>${{ format price }}</h4>
+              {{/ if }}
               <p>{{ description }}</p>
 
               <p class="description-with-icon">
@@ -109,6 +111,11 @@
                     </a>
                   </p>
                 {{/ if }}
+                <p>
+                  <a class="btn" href="{{ pathFor 'stores.show' }}">
+                    Ver Productos
+                  </a>
+                </p>
 
               {{/ with }}
               {{# each currentUser.projects }}

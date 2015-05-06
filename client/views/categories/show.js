@@ -62,12 +62,14 @@ Template.categoriesShow.onRendered(function() {
 
     Tracker.afterFlush(function () {
       var msnry = new Masonry(container, { itemSelector: '.col' });
-      $('.masonry .col').each(function(index, val) {
-        $(this).imagesLoaded()
-          .always(function() {
-            var msnry = new Masonry(container, { itemSelector: '.col' });
-          })
-      });
+      Meteor.setTimeout(function() {
+        $('.masonry .col').each(function(index, val) {
+          $(this).imagesLoaded()
+            .always(function() {
+              var msnry = new Masonry(container, { itemSelector: '.col' });
+            })
+        });
+      }, 50);
     });
   })
 })

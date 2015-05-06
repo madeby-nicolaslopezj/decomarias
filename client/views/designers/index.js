@@ -10,10 +10,12 @@ Template.designersIndex.onRendered(function() {
     Designers.find().count();
     Tracker.afterFlush(function () {
       var msnry = new Masonry(container, { itemSelector: '.col' });
-      $('.masonry .col').imagesLoaded()
-      .progress(function() {
-        var msnry = new Masonry(container, { itemSelector: '.col' });
-      })
+      Meteor.setTimeout(function() {
+        $('.masonry .col').imagesLoaded()
+        .progress(function() {
+          var msnry = new Masonry(container, { itemSelector: '.col' });
+        })
+      }, 50);
     });
   })
 
