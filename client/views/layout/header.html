@@ -4,23 +4,39 @@
       <a href="{{ pathFor 'home' }}" class="brand-logo">
         Decomarías
       </a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li class="{{ isActiveRoute regex='search' }}">
-          <a href="{{ pathFor 'search' }}">
-            <i class="mdi-action-search"></i>
-          </a>
-        </li>
-        <li class="{{ isActiveRoute regex='categories' }}">
-          <a href="{{ pathFor 'categories.index' }}">
-            <i class="mdi-action-view-module"></i>
-          </a>
-        </li>
-        <li>
-          <a href="{{ pathFor 'admin' }}">
-            <i class="mdi-social-person"></i>
-          </a>
-        </li>
+      <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <ul class="side-nav" id="mobile-nav">
+        {{> headerItems withText=true }}
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        {{> headerItems withText=false }}
       </ul>
     </div>
   </nav>
+</template>
+<template name="headerItems">
+  <li class="{{ isActiveRoute regex='search' }}">
+    <a href="{{ pathFor 'search' }}">
+      <i class="mdi-action-search {{# if withText }}left{{/ if }}"></i>
+      {{# if withText }}
+        Buscar
+      {{/ if }}
+    </a>
+  </li>
+  <li class="{{ isActiveRoute regex='categories' }}">
+    <a href="{{ pathFor 'categories.index' }}">
+      <i class="mdi-action-view-module {{# if withText }}left{{/ if }}"></i>
+      {{# if withText }}
+        Categorías
+      {{/ if }}
+    </a>
+  </li>
+  <li>
+    <a href="{{ pathFor 'admin' }}">
+      <i class="mdi-social-person {{# if withText }}left{{/ if }}"></i>
+      {{# if withText }}
+        Mi Cuenta
+      {{/ if }}
+    </a>
+  </li>
 </template>
