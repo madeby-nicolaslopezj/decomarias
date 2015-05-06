@@ -23,6 +23,14 @@
       {{/ if }}
     </a>
   </li>
+  <li class="{{ isActiveRoute regex='stores' }}">
+    <a href="{{ pathFor 'stores.index' }}">
+      <i class="mdi-action-store {{# if withText }}left{{/ if }}"></i>
+      {{# if withText }}
+        Tiendas
+      {{/ if }}
+    </a>
+  </li>
   <li class="{{ isActiveRoute regex='categories' }}">
     <a href="{{ pathFor 'categories.index' }}">
       <i class="mdi-action-view-module {{# if withText }}left{{/ if }}"></i>

@@ -22,5 +22,8 @@ Stores.attachSchema(new SimpleSchema({
     type: String,
     optional: true,
     label: 'Sitio Web'
-  }
+  },
+  logo: orion.attribute('file', {
+    label: 'Logo'
+  })
 }));

@@ -1,8 +1,40 @@
 <template name="storesShow">
   <div class="container">
-    <h1 class="page-title">{{ store.name }}</h1>
+    <p class="center"><br><img src="{{ store.logo.url }}"></p>
   </div>
   <div class="row masonry">
+    <div class="col s12 m6 l3">
+      <div class="card-panel">
+        {{# with store }}
+          <h5>
+            <a class="grey-text text-darken-4" href="{{ pathFor 'stores.show' }}">
+              {{ name }}
+            </a>
+          </h5>
+          <p class="description-with-icon">
+            <i class="mdi-communication-phone"></i>
+            {{ phone }}
+          </p>
+          <p class="description-with-icon">
+            <i class="mdi-communication-email"></i>
+            {{ email }}
+          </p>
+          <p class="description-with-icon">
+            <i class="mdi-maps-store-mall-directory"></i>
+            {{ direction }}
+          </p>
+          {{# if website }}
+            <p class="description-with-icon">
+              <i class="mdi-social-public"></i>
+              <a href="{{ website }}">
+                {{ website }}
+              </a>
+            </p>
+          {{/ if }}
+
+        {{/ with }}
+      </div>
+    </div>
     {{# each products }}
       <div class="col s12 m6 l3">
         <a href="{{ pathFor 'products.show' }}">

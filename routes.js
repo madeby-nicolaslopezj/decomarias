@@ -27,6 +27,10 @@ Router.route('/categorias/:value', {
   layoutTemplate: 'layout'
 });
 
+Router.route('/tiendas', {
+  name: 'stores.index',
+  layoutTemplate: 'layout'
+});
 
 Router.route('/tiendas/:_id', {
   name: 'stores.show',

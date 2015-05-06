@@ -12,3 +12,7 @@ Meteor.publish('store', function(storeId) {
   check(storeId, String);
   return [Stores.find(storeId), Products.find({ storeId: storeId })];
 })
+
+Meteor.publish('stores', function() {
+  return Stores.find();
+})

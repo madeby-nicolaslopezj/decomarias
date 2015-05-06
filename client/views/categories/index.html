@@ -1,30 +1,30 @@
 <template name="categoriesIndex">
   <div class="container">
     <h1 class="page-title">Categorías</h1>
-    <div class="row masonry">
-      {{# each categories }}
-        <div class="col s6 m4">
-          <a href="{{ pathFor 'categories.show' }}">
-            <div class="card">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img src="{{ image.url }}">
-              </div>
-              <div class="card-content">
-                <span class="card-title grey-text text-darken-4">{{ label }}</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      {{/ each }}
+  </div>
+  <div class="row masonry">
+    {{# each categories }}
       <div class="col s6 m4">
-        <a href="{{ pathFor 'designers.index' }}">
+        <a href="{{ pathFor 'categories.show' }}">
           <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img src="{{ image.url }}">
+            </div>
             <div class="card-content">
-              <span class="card-title grey-text text-darken-4">{{ dict 'texts.tituloDecoradores' 'Diseñadores' }}</span>
+              <span class="card-title grey-text text-darken-4">{{ label }}</span>
             </div>
           </div>
         </a>
       </div>
+    {{/ each }}
+    <div class="col s6 m4">
+      <a href="{{ pathFor 'designers.index' }}">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title grey-text text-darken-4">{{ dict 'texts.tituloDecoradores' 'Diseñadores' }}</span>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </template>
