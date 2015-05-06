@@ -7,6 +7,11 @@ Router.route('/home', {
 	layoutTemplate: 'layout'
 });
 
+Router.route('/buscar', {
+  name: 'search',
+  layoutTemplate: 'layout'
+});
+
 Router.route('/producto/:_id', {
   name: 'products.show',
   layoutTemplate: 'layout'

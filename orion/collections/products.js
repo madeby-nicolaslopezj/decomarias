@@ -88,3 +88,8 @@ Products.helpers({
     return Favorites.find({ product: this._id, userId: userId }).count() != 0;
   }
 });
+
+Products.initEasySearch(['name', 'description'], {
+    'limit' : 20,
+    'use' : 'mongo-db'
+});

@@ -1,0 +1,47 @@
+<template name="search">
+  <div class="container">
+    <h1 class="page-title">Buscar</h1>
+    <nav>
+      <div class="nav-wrapper teal">
+        <div class="input-field">
+          {{> esInput index="products" type="search" }}
+          <label for="search"><i class="mdi-action-search"></i></label>
+          <i class="mdi-navigation-close"></i>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <br>
+  {{# ifEsHasNoResults index="products" }}
+    <div class="center">
+      <br>
+      <p>
+        No se encontraron productos
+      </p>
+    </div>
+  {{/ ifEsHasNoResults}}
+  {{# ifEsIsSearching index="products" }}
+    {{> loading }}
+  {{/ifEsIsSearching}}
+  <div class="row masonry">
+    {{# esEach index="products" }}
+      <div class="col s12 m6 l3">
+        <a href="{{ pathFor 'products.show' }}">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img src="{{ image.url }}">
+            </div>
+            <div class="card-content">
+              <span class="card-title grey-text text-darken-4">{{ name }}</span>
+              <p class="grey-text text-darken-4">{{ description }}</p>
+              <p class="grey-text text-darken-4">${{ format price }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    {{/ esEach }}
+  </div>
+  <div class="center">
+    {{> esLoadMoreButton index="products" class="btn" content="Cargar Mas" }}
+  </div>
+</template>

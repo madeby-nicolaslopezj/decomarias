@@ -5,8 +5,21 @@
         Decomarías
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li class="{{ isActiveRoute regex='categories' }}"><a href="{{ pathFor 'categories.index' }}"><i class="mdi-action-view-module"></i></a></li>
-        <li><a href="{{ pathFor 'admin' }}"><i class="mdi-social-person"></i></a></li>
+        <li class="{{ isActiveRoute regex='search' }}">
+          <a href="{{ pathFor 'search' }}">
+            <i class="mdi-action-search"></i>
+          </a>
+        </li>
+        <li class="{{ isActiveRoute regex='categories' }}">
+          <a href="{{ pathFor 'categories.index' }}">
+            <i class="mdi-action-view-module"></i>
+          </a>
+        </li>
+        <li>
+          <a href="{{ pathFor 'admin' }}">
+            <i class="mdi-social-person"></i>
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
