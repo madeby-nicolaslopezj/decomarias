@@ -2,6 +2,8 @@ var role = new Roles.Role('store-owner');
 
 Roles.registerAction('updateMyStore', false);
 
+role.allow('updateMyStore', true);
+
 role.allow('collection.stores.update', function(userId, doc, fields, modifier) {
   return doc.owner === userId; // Will be allowed to edit his own posts
 });

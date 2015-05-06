@@ -23,7 +23,8 @@ Template.categoriesShow.onRendered(function() {
 
   self.autorun(function() {
     var numOptions = 3;
-    var ids = Session.get('selectedTypes');
+    var ids = Session.get('selectedTypes') || [];
+    if (!ids) return;
     if (Products.find({ category: { $in: ids } }).count() == 0) return;
     var min = Products.findOne({ category: { $in: ids } }, { sort: { price: 1 } }).price;
     var max = Products.findOne({ category: { $in: ids } }, { sort: { price: -1 } }).price;
@@ -47,14 +48,17 @@ Template.categoriesShow.onRendered(function() {
   var container = document.querySelector('.masonry');
   var msnry = new Masonry(container, { itemSelector: '.col' });
   self.autorun(function() {
-
-    var ids = Session.get('selectedTypes');
+    var ids = Session.get('selectedTypes') || [];
     var prices = [];
-    Session.get('selectedPrices').map(function (number) {
+    (Session.get('selectedPrices') || []).map(function (number) {
       var price = _.findWhere(Session.get('availablePrices'), { identifier: number });
       prices.push({ price: { $gte: price.min, $lte: price.max } });
     });
-    Products.find({ category: { $in: ids }, $or: prices }).count();
+    if (prices.length > 0) {
+      Products.find({ category: { $in: ids }, $or: prices }).count();
+    } else {
+      Products.find({ category: { $in: ids } }).count();
+    }
 
     Tracker.afterFlush(function () {
       var msnry = new Masonry(container, { itemSelector: '.col' });
@@ -97,7 +101,7 @@ Template.categoriesShow.helpers({
     return Categories.find({ category: item.label });
   },
   products: function() {
-    var ids = Session.get('selectedTypes');
+    var ids = Session.get('selectedTypes') || [];
 
     if (!Session.get('selectedPrices')) {
       return Products.find({ category: { $in: ids }});
@@ -108,7 +112,7 @@ Template.categoriesShow.helpers({
       var price = _.findWhere(Session.get('availablePrices'), { identifier: number });
       prices.push({ price: { $gte: price.min, $lte: price.max } });
     });
-    return Products.find({ category: { $in: ids }, $or: prices });
+    return prices.length > 0 ? Products.find({ category: { $in: ids }, $or: prices }) : Products.find({ category: { $in: ids } });
   }
 });
 

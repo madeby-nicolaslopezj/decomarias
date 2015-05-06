@@ -12,9 +12,9 @@ orion.dictionary.addDefinition('pisos', 'images',
   })
 );
 
-orion.dictionary.addDefinition('descoracion', 'images', 
+orion.dictionary.addDefinition('decoracion', 'images', 
   orion.attribute('file', {
-      label: 'Imagen categoría descoración',
+      label: 'Imagen categoría decoración',
       optional: true
   })
 );

@@ -10,6 +10,7 @@
         {{# each topCategories }}
           <p><a href="{{ pathFor 'categories.show' }}" class="btn">{{ label }}</a></p>
         {{/ each }}
+        <p><a href="{{ pathFor 'designers.index' }}" class="btn">{{ dict 'texts.tituloDecoradores' 'Diseñadores' }}</a></p>
       </div>
       <div class="col s12 m3">
         {{> bannerSide }}

@@ -22,13 +22,5 @@ Stores.attachSchema(new SimpleSchema({
     type: String,
     optional: true,
     label: 'Sitio Web'
-  },
-  logo: orion.attribute('file', {
-    label: 'Logo',
-    optional: true
-  }),
-  backgroundImage: orion.attribute('file', {
-    label: 'Imagen de Fondo',
-    optional: true
-  }),
+  }
 }));

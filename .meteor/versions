@@ -60,7 +60,7 @@ nicolaslopezj:tabular-materialize@1.2.1
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
 ordered-dict@1.0.3
-orionjs:accounts@1.0.1
+orionjs:accounts@1.0.3
 orionjs:attributes@1.0.1
 orionjs:base@1.0.1
 orionjs:collections@1.0.1
@@ -71,7 +71,7 @@ orionjs:file-attribute@1.0.0
 orionjs:filesystem@1.0.0
 orionjs:materialize@1.0.5
 orionjs:relationships@1.0.0
-orionjs:s3@1.0.1
+orionjs:s3@1.0.2
 random@1.0.3
 reactive-dict@1.1.0
 reactive-var@1.0.5
