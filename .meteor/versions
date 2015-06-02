@@ -102,5 +102,4 @@ useraccounts:core@1.8.1
 useraccounts:materialize@1.8.1
 webapp@1.2.0
 webapp-hashing@1.0.3
-wolves:bourbon@2.0.0
 zimme:active-route@2.0.1
