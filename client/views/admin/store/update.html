@@ -1,12 +1,11 @@
 <template name="adminStoreUpdate">
+  {{# Layout template="orionMaterializeHeaderContainer" }}
+    Mi Tienda
+  {{/ Layout }}
   {{# Layout template="orionMaterializeContentContainer" }}
-    {{# Layout template="orionMaterializeHeaderContainer" }}
-      Mi Tienda
-    {{/ Layout }}
     {{> quickForm collection='Stores' doc=store id="adminStoreUpdateForm" type="update" buttonContent=false omitFields="owner" }}
   {{/ Layout }}
   {{# Layout template="orionMaterializeButtonsContainer" }}
-      <a href="{{ collection.indexPath }}">Volver</a>
-      <a class="light-blue-text text-accent-4 save-btn" href="#">Guardar</a>
+      <a class="btn save-btn" href="#">Guardar</a>
   {{/ Layout }}
 </template>

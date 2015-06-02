@@ -1,0 +1,14 @@
+@import "bourbon/bourbon";
+@import "colors.scss";
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.strong {
+  font-weight: 600;
+}
+
+.separated {
+  letter-spacing: .1rem;
+}

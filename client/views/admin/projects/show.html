@@ -1,16 +1,14 @@
 <template name="collectionsProjectsShow">
   {{# with project }}
+    {{# Layout template="orionMaterializeHeaderContainer" }}
+      {{ name }}
+    {{/ Layout }}
     {{# Layout template="orionMaterializeContentContainer" }}
-      {{# Layout template="orionMaterializeHeaderContainer" }}
-        {{ name }}
-      {{/ Layout }}
       <div class="row">
         <div class="col s6">
-          {{# if budget }}Presupuesto: ${{ format budget }} - {{/ if }}
-          Total: ${{ format cost }}
-        </div>
-        <div class="col s6">
-          
+          {{# if budget }}Presupuesto: <b>${{ format budget }}</b> - {{/ if }}
+          Total: <b>${{ format cost }}</b>.
+          <a href="{{ pathFor 'collections.projects.index' }}">Volver</a>
         </div>
       </div>
 
@@ -37,10 +35,6 @@
           </div>
         {{/ each }}
       </div>
-    {{/ Layout }}
-
-    {{# Layout template="orionMaterializeButtonsContainer" }}
-        <a href="{{ pathFor 'collections.projects.index' }}">Volver</a>
     {{/ Layout }}
   {{/ with }}
 </template>

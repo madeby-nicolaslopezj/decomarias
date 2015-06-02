@@ -8,7 +8,7 @@ Projects.attachSchema(new SimpleSchema({
     label: 'Presupuesto',
     optional: true
   },
-  products: orion.attribute('hasMany', { optional: true }, {
+  products: orion.attribute('hasMany', { optional: true, autoform: { omit: true } }, {
     collection: Products,
     publicationName: 'projectsProducts',
     titleField: 'name',

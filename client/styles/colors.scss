@@ -1,0 +1,49 @@
+$marias-green: #c7e5d3;
+$marias-grey: #6f7073;
+
+.marias-green {
+  background-color: $marias-green;
+}
+
+.marias-green-text {
+  color: $marias-green;
+}
+
+.teal {
+  @extend .marias-green;
+}
+
+.teal-text {
+  @extend .marias-green-text;
+}
+
+.btn {
+  background-color: $marias-green;
+  color: $marias-grey;
+  &:hover {
+    background-color: darken($marias-green, 10%);
+  }
+  &.light-blue, &.red {
+    color: #fff;
+  }
+}
+
+.marias-green-with-text {
+  background-color: $marias-green;
+  color: $marias-grey !important;
+  * {
+    color: $marias-grey !important;
+  }
+}
+
+.marias-grey {
+  background-color: $marias-grey;
+}
+
+.marias-grey-text {
+  color: $marias-grey;
+}
+
+.page-title {
+  color: darken($marias-green, 20%);
+}

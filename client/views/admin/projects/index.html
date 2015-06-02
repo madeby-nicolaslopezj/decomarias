@@ -1,8 +1,13 @@
 <template name="adminProjectsIndex">
+  {{# Layout template="orionMaterializeHeaderContainer" }}
+    Mis Proyectos
+  {{/ Layout }}
   {{# Layout template="orionMaterializeContentContainer" }}
-    {{# Layout template="orionMaterializeHeaderContainer" }}
-      Mis Proyectos
-    {{/ Layout }}
+    <div class="floating-btn-onheader">
+      <a href="{{ pathFor 'collections.projects.create' }}" class="btn-floating btn-large waves-effect waves-light red right">
+        <i class="mdi-content-add"></i>
+      </a>
+    </div>
     <div class="row">
       {{# each projects }}
         <div class="col s12 m6">
@@ -20,8 +25,5 @@
         </div>
       {{/ each }}
     </div>
-  {{/ Layout }}
-  {{# Layout template="orionMaterializeButtonsContainer" }}
-    <a class="light-blue-text text-accent-4" href="{{ pathFor 'collections.projects.create' }}">Crear</a>
   {{/ Layout }}
 </template>

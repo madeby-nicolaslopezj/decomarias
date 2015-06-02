@@ -1,9 +1,9 @@
 <template name="adminProductsCreate">
   {{# if collection.canShowCreate }}
+    {{# Layout template="orionMaterializeHeaderContainer" }}
+      Crear producto
+    {{/ Layout }}
     {{# Layout template="orionMaterializeContentContainer" }}
-      {{# Layout template="orionMaterializeHeaderContainer" }}
-        Crear producto
-      {{/ Layout }}
       {{# if currentUser.hasRole 'admin' }}
         {{> quickForm collection=collection id="orionMaterializeCollectionsCreateForm" type="insert" buttonContent=false }}
       {{ else }}

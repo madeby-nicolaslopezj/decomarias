@@ -1,8 +1,8 @@
 <template name="favoritesIndex">
+  {{# Layout template="orionMaterializeHeaderContainer" }}
+    Mis Favoritos
+  {{/ Layout }}
   {{# Layout template="orionMaterializeContentContainer" }}
-    {{# Layout template="orionMaterializeHeaderContainer" }}
-      Mis Favoritos
-    {{/ Layout }}
     <div class="row masonry">
       {{# each favorites }}
         {{# with getProduct }}
