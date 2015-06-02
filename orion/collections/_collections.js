@@ -1,56 +1,59 @@
 Categories = new orion.collection('categories', {
-  singularName: 'Category',
-  pluralName: 'Categories',
+  singularName: 'Categoría',
+  pluralName: 'Categorías',
+  title: 'Categorías',
   link: {
     title: 'Categorias' 
   },
   tabular: {
     columns: [
-      { data: "category", title: "Categoría" },
-      { data: "subcategory", title: "Sub-categoria" },
-      { data: "type", title: "Tipo" },
+      { data: 'category', title: 'Categoría' },
+      { data: 'subcategory', title: 'Sub-categoria' },
+      { data: 'type', title: 'Tipo' },
     ]
   }
 });
 
 Products = new orion.collection('products', {
-  singularName: 'Product', 
-  pluralName: 'Products',
+  singularName: 'Producto', 
+  pluralName: 'Productos',
   title: 'Productos',
   link: {
     title: 'Productos' 
   },
   tabular: {
     columns: [
-      { data: "name", title: "Name" },
-      { data: "description", title: "Descripción" },
+      { data: 'name', title: 'Name' },
+      { data: 'description', title: 'Descripción' },
     ]
   }
 });
 
 Stores = new orion.collection('stores', {
-  singularName: 'Store', 
-  pluralName: 'Stores', 
+  singularName: 'Tienda', 
+  pluralName: 'Tiendas',
+  title: 'Tiendas', 
   link: {
     title: 'Tiendas' 
   },
   tabular: {
     columns: [
-      { data: "name", title: "Name" },
-      orion.attributeColumn('user', 'owner', 'Owner')
+      { data: 'name', title: 'Name' },
+      orion.attributeColumn('user', 'owner', 'Dueño')
     ]
   }
 });
 
 Projects = new orion.collection('projects', {
-  singularName: 'Project', 
-  pluralName: 'Projects', 
+  singularName: 'Proyecto', 
+  pluralName: 'Proyectos', 
+  title: 'Proyectos',
   link: {
     title: 'Proyectos' 
   },
   tabular: {
     columns: [
-      { data: "name", title: "Name" },
+      { data: 'name', title: 'Name' },
     ]
   }
 });
@@ -69,15 +72,16 @@ Favorites = new orion.collection('favorites', {
 });
 
 Designers = new orion.collection('designers', {
-  singularName: 'Designer', 
-  pluralName: 'Designers', 
+  singularName: 'Diseñador', 
+  pluralName: 'Diseñadores', 
+  title: 'Diseñadores',
   link: {
-    title: 'Designers' 
+    title: 'Diseñadores' 
   },
   tabular: {
     columns: [
-      { data: "name", title: "Name" },
-      { data: "email", title: "Email" },
+      { data: 'name', title: 'Name' },
+      { data: 'email', title: 'Email' },
     ]
   }
 });

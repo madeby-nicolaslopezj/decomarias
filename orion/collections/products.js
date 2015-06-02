@@ -7,7 +7,7 @@ Products.attachSchema(new SimpleSchema({
     collection: Categories,
     publicationName: 'productsPosts',
     titleField: 'type',
-    aditionalFields: ['category', 'subcategory'],
+    additionalFields: ['category', 'subcategory'],
     render: {
       item: function(item, escape) {
         return '<div class="product-category">' +
@@ -39,7 +39,7 @@ Products.attachSchema(new SimpleSchema({
     filter: function(userId) {
       return Roles.userHasRole(userId, 'admin') ? {} : { owner: userId };
     },
-    aditionalFields: ['owner']
+    additionalFields: ['owner']
   }),
   image: orion.attribute('file', {
     label: 'Imagen Principal'
@@ -78,8 +78,6 @@ Products.attachSchema(new SimpleSchema({
     label: 'Materialidad'
   }
 }));
-
-
 
 Products.helpers({
   store: function () {

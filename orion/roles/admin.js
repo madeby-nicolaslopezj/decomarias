@@ -1,4 +1,4 @@
 var role = Roles._adminRole;
 
-role.deny('collection.favorites.index', true);
-role.deny('collection.projects.index', true);
+role.deny('collections.favorites.index', true);
+role.deny('collections.projects.index', true);

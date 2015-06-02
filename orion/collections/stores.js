@@ -3,7 +3,7 @@ Stores.attachSchema(new SimpleSchema({
     type: String,
     label: 'Nombre'
   },
-  owner: orion.attribute('user', {}, {
+  owner: orion.attribute('user', { label: 'Dueño' }, {
     publicationName: 'storesUser'
   }),
   phone: {
