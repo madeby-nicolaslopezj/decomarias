@@ -2,19 +2,25 @@
   <br>
   <div class="container home">
     {{> bannerTop }}
-    <p>
-      {{# each topCategories }}
-        <a href="{{ pathFor 'categories.show' }}" class="btn">
-          {{ label }}
-        </a>
-      {{/ each }}
-      <a href="{{ pathFor 'designers.index' }}" class="btn">
-        {{ dict 'texts.tituloDecoradores' 'Diseñadores' }}
-      </a>
-    </p>
-    <div class="row">
-      
-    </div>
+    <nav class="header marias-green-with-text">
+      <div class="nav-wrapper">
+        <ul>
+          {{# each topCategories }}
+            <li>
+              <a href="{{ pathFor 'categories.show' }}" class="uppercase separated">
+                {{ label }}
+              </a>
+            </li>
+          {{/ each }}
+          <li>
+             <a href="{{ pathFor 'designers.index' }}" class="uppercase separated">
+              {{ dict 'texts.tituloDecoradores' 'Diseñadores' }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <br>
     <div class="row">
       <div class="col s12 m9">
         <img class="responsive-img" src="{{ dict 'brand.logo.url' }}">

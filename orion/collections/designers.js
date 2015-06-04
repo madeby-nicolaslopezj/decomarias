@@ -18,5 +18,5 @@ Designers.attachSchema(new SimpleSchema({
     label: 'Sitio Web',
     optional: true
   },
-  logo: orion.attribute('file')
+  logo: orion.attribute('image')
 }));

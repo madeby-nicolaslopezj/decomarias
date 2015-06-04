@@ -104,17 +104,9 @@ Template.categoriesShow.helpers({
   },
   products: function() {
     var ids = Session.get('selectedTypes') || [];
-
-    if (!Session.get('selectedPrices')) {
-      return Products.find({ category: { $in: ids }});
-    }
-
-    var prices = [];
-    Session.get('selectedPrices').map(function (number) {
-      var price = _.findWhere(Session.get('availablePrices'), { identifier: number });
-      prices.push({ price: { $gte: price.min, $lte: price.max } });
-    });
-    return prices.length > 0 ? Products.find({ category: { $in: ids }, $or: prices }) : Products.find({ category: { $in: ids } });
+    var withPrice = Products.find({ category: { $in: ids }, price: { $ne: null }}, { sort: { price: 1 } }).fetch()
+    var withoutPrice = Products.find({ category: { $in: ids }, price: null}, { sort: { price: 1 } }).fetch()
+    return _.union(withPrice, withoutPrice);
   }
 });
 

@@ -41,22 +41,22 @@ Products.attachSchema(new SimpleSchema({
     },
     additionalFields: ['owner']
   }),
-  image: orion.attribute('file', {
+  image: orion.attribute('image', {
     label: 'Imagen Principal'
   }),
-  image1: orion.attribute('file', {
+  image1: orion.attribute('image', {
     label: 'Imagen Secundaria 1',
     optional: true
   }),
-  image2: orion.attribute('file', {
+  image2: orion.attribute('image', {
     label: 'Imagen Secundaria 2',
     optional: true
   }),
-  image3: orion.attribute('file', {
+  image3: orion.attribute('image', {
     label: 'Imagen Secundaria 3',
     optional: true
   }),
-  image4: orion.attribute('file', {
+  image4: orion.attribute('image', {
     label: 'Imagen Secundaria 4',
     optional: true
   }),
@@ -76,7 +76,8 @@ Products.attachSchema(new SimpleSchema({
   material: {
     type: String,
     label: 'Materialidad'
-  }
+  },
+  createdAt: orion.attribute('createdAt')
 }));
 
 Products.helpers({

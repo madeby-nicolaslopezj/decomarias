@@ -18,3 +18,7 @@ Meteor.publish('productsByCategory', function (ids) {
   check(ids, [String]);
   return Products.find({ category: { $in: ids } });
 });
+
+Meteor.publish('allProducts', function() {
+  return Products.find();
+})

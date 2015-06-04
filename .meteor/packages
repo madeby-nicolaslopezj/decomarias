@@ -11,7 +11,7 @@ orionjs:materialize
 accounts-password
 orionjs:filesystem
 orionjs:s3
-orionjs:file-attribute
+orionjs:image-attribute
 orionjs:relationships
 orionjs:lang-es
 reywood:publish-composite

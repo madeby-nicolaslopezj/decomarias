@@ -34,19 +34,6 @@
                   </span>
                 </p>
               {{/ each }}
-              <p>Precios</p>
-              {{# each availablePrices }}
-                <p class="prices">
-                  <span class="child-category-box">
-                    {{# if isPriceSelected }}
-                      <input category="{{ identifier }}" type="checkbox" class="filled-in" id="filled-in-box-{{ identifier }}" checked="checked" />
-                    {{ else }}
-                      <input category="{{ identifier }}" type="checkbox" class="filled-in" id="filled-in-box-{{ identifier }}"/>
-                    {{/ if }}
-                    <label for="filled-in-box-{{ identifier }}">{{ label }}</label>
-                  </span>
-                </p>
-              {{/ each }}
             </div>
           </div>
           {{# each products }}

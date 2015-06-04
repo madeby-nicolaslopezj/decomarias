@@ -23,7 +23,7 @@ Stores.attachSchema(new SimpleSchema({
     optional: true,
     label: 'Sitio Web'
   },
-  logo: orion.attribute('file', {
+  logo: orion.attribute('image', {
     label: 'Logo'
   })
 }));

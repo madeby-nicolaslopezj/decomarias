@@ -23,6 +23,6 @@ Template.storesShow.helpers({
     return Stores.findOne(Router.current().params._id)
   },
   products: function() {
-    return Products.find({ storeId: Router.current().params._id });
+    return Products.find({ storeId: Router.current().params._id }, { sort: { createdAt: 1 } });
   }
 });
