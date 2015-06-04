@@ -78,6 +78,16 @@ Template.categoriesShow.helpers({
   shouldShowTabs: function() {
     return getSubcategories(Router.current().params.value).length > 1;
   },
+  getImageHeight: function() {
+    var info = this.image.info;
+    var colWidth = $('.masonry .card-image img').width();
+    var finalHeight = (info.height * colWidth) / info.width;
+    return finalHeight;
+  },
+  getImageBackgroundColor: function() {
+    var color = this.image.info.primaryColor;
+    return 'rgb(' + color.r + ', ' + color.g + ', ' + color.b + ')';
+  },
   currentCategory: function() {
     var current = _.findWhere(topCategories, { value: Router.current().params.value });
     current.image = orion.dictionary.get('images.' + current.value);

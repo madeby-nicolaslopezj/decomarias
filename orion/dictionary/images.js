@@ -39,10 +39,3 @@ orion.dictionary.addDefinition('cocina', 'images',
       optional: true
   })
 );
-
-orion.dictionary.addDefinition('textil', 'images', 
-  orion.attribute('image', {
-      label: 'Imagen categoría textil',
-      optional: true
-  })
-);
