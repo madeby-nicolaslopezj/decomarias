@@ -80,7 +80,7 @@ Template.categoriesShow.helpers({
   },
   getImageHeight: function() {
     var info = this.image.info;
-    var colWidth = $('.masonry .card-image img').width();
+    var colWidth = $('.masonry .l3 .card-panel').width();
     var finalHeight = (info.height * colWidth) / info.width;
     return finalHeight;
   },
