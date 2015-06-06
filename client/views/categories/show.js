@@ -21,55 +21,13 @@ Template.categoriesShow.onRendered(function() {
     self.subscribe('productsByCategory', ids);
   })
 
-  self.autorun(function() {
-    var numOptions = 3;
-    var ids = Session.get('selectedTypes') || [];
-    if (!ids) return;
-    if (Products.find({ category: { $in: ids } }).count() == 0) return;
-    var min = Products.findOne({ category: { $in: ids } }, { sort: { price: 1 } }).price;
-    var max = Products.findOne({ category: { $in: ids } }, { sort: { price: -1 } }).price;
-    var diff = Math.ceil((max - min) / numOptions); 
-    var prices = _.range(min, max, diff);
-    var selected = [];
-    Session.set('availablePrices', prices.map(function(item) {
-      selected.push(item + '');
-      var priceMin = Math.floor(item * 0.001) * 1000;
-      var priceMax = Math.ceil((item + diff) * 0.001) * 1000;
-      return {
-        label: '$' + numberFormat(priceMin) + ' - $' + numberFormat(priceMax),
-        min: priceMin,
-        max: priceMax,
-        identifier: item + ''
-      }
-    }));
-    Session.set('selectedPrices', selected);
-  })
-
   var container = document.querySelector('.masonry');
   var msnry = new Masonry(container, { itemSelector: '.col' });
   self.autorun(function() {
     var ids = Session.get('selectedTypes') || [];
-    var prices = [];
-    (Session.get('selectedPrices') || []).map(function (number) {
-      var price = _.findWhere(Session.get('availablePrices'), { identifier: number });
-      prices.push({ price: { $gte: price.min, $lte: price.max } });
-    });
-    if (prices.length > 0) {
-      Products.find({ category: { $in: ids }, $or: prices }).count();
-    } else {
-      Products.find({ category: { $in: ids } }).count();
-    }
-
+    Products.find({ category: { $in: ids } }).count();
     Tracker.afterFlush(function () {
       var msnry = new Masonry(container, { itemSelector: '.col' });
-      Meteor.setTimeout(function() {
-        $('.masonry .col').each(function(index, val) {
-          $(this).imagesLoaded()
-            .always(function() {
-              var msnry = new Masonry(container, { itemSelector: '.col' });
-            })
-        });
-      }, 50);
     });
   })
 })
@@ -83,10 +41,6 @@ Template.categoriesShow.helpers({
     var colWidth = $('.masonry .l3 .card-panel').width();
     var finalHeight = (info.height * colWidth) / info.width;
     return finalHeight;
-  },
-  getImageBackgroundColor: function() {
-    var color = this.image.info.primaryColor;
-    return 'rgb(' + color.r + ', ' + color.g + ', ' + color.b + ')';
   },
   currentCategory: function() {
     var current = _.findWhere(topCategories, { value: Router.current().params.value });

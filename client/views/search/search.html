@@ -23,13 +23,14 @@
   {{# ifEsIsSearching index="products" }}
     {{> loading }}
   {{/ifEsIsSearching}}
+  <div class="row"><div class="col s12 m6 l3 example-width"></div></div>
   <div class="row masonry">
     {{# esEach index="products" }}
       <div class="col s12 m6 l3">
         <a href="{{ pathFor 'products.show' }}">
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-              <img src="{{ image.url }}">
+              <img src="{{ image.url }}" height="{{ getImageHeight }}" style="background-color: {{ image.info.backgroundColor }}">
             </div>
             <div class="card-content">
               <span class="card-title grey-text text-darken-4">{{ name }}</span>

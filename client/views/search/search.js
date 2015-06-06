@@ -8,13 +8,9 @@ Template.search.onRendered(function() {
   var container = document.querySelector('.masonry');
 
   var remason = function() {
-    var msnry = new Masonry(container, { itemSelector: '.col' });
     Meteor.setTimeout(function() {
-      $('.masonry .col').imagesLoaded()
-      .always(function() {
-        var msnry = new Masonry(container, { itemSelector: '.col' });
-      })
-    }, 50);
+      var msnry = new Masonry(container, { itemSelector: '.col' });
+    }, 1);
   }
 
   self.autorun(function() {
@@ -29,3 +25,13 @@ Template.search.onRendered(function() {
   instance.on('searchResults', remason);
   instance.on('total', remason);
 })
+
+Template.search.helpers({
+  getImageHeight: function () {
+    var info = this.image.info;
+    console.log(info);
+    var colWidth = $('.example-width').width();
+    var finalHeight = (info.height * colWidth) / info.width;
+    return finalHeight;
+  }
+});
