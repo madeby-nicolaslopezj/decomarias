@@ -39,3 +39,10 @@ orion.dictionary.addDefinition('cocina', 'images',
       optional: true
   })
 );
+
+orion.dictionary.addDefinition('decoradores', 'images', 
+  orion.attribute('image', {
+      label: 'Imagen decoradores',
+      optional: true
+  })
+);

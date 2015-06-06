@@ -1,28 +1,22 @@
 <template name="categoriesIndex">
-  <div class="container">
-    <h1 class="page-title">Categorías</h1>
-  </div>
-  <div class="row masonry">
+  <div class="row">
     {{# each categories }}
-      <div class="col s6 m4">
+      <div class="col s12 m6 full-image-row">
         <a href="{{ pathFor 'categories.show' }}">
-          <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img src="{{ image.url }}">
-            </div>
-            <div class="card-content">
-              <span class="card-title grey-text text-darken-4">{{ label }}</span>
-            </div>
+          <div class="full-image-cat" style="background-color: {{ image.info.backgroundColor }};background-image: url({{ image.url }});">
+          </div>
+          <div class="full-image-text marias-green-with-text">
+            {{ label }}
           </div>
         </a>
       </div>
     {{/ each }}
-    <div class="col s6 m4">
+    <div class="col s12 full-image-row">
       <a href="{{ pathFor 'designers.index' }}">
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title grey-text text-darken-4">{{ dict 'texts.tituloDecoradores' 'Diseñadores' }}</span>
-          </div>
+        <div class="full-image-cat" style="background-color: {{ dict 'images.decoradores.info.backgroundColor' }};background-image: url({{ dict 'images.decoradores.url' }});">
+        </div>
+        <div class="full-image-text marias-green-with-text">
+          {{ dict 'texts.tituloDecoradores' }}
         </div>
       </a>
     </div>
