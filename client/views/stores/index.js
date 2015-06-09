@@ -25,7 +25,7 @@ Template.storesIndex.helpers({
   },
   getImageHeight: function () {
     rwindow.$width()
-    var info = this.image.info;
+    var info = this.logo.info;
     var colWidth = $('.example-width').width();
     var finalHeight = (info.height * colWidth) / info.width;
     return finalHeight;
