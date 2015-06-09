@@ -1,0 +1,15 @@
+<template name="ads">
+  <div class="row">
+    <div class="col s12 ad-container">
+      {{# with ad }}
+        {{# if url }}
+          <a href="{{ pathFor 'ad.url' }}" target="_BLANK">
+            <img src="{{ image.url }}" style="background-color: {{ image.info.backgroundColor }}" height="{{ getImageHeight }}">
+          </a>
+        {{ else }}
+          <img src="{{ image.url }}" style="background-color: {{ image.info.backgroundColor }}" height="{{ getImageHeight }}">
+        {{/ if }}
+      {{/ with }}
+    </div>
+  </div>
+</template>

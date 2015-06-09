@@ -28,6 +28,7 @@ Template.search.onRendered(function() {
 
 Template.search.helpers({
   getImageHeight: function () {
+    rwindow.$width()
     var info = this.image.info;
     console.log(info);
     var colWidth = $('.example-width').width();

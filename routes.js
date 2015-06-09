@@ -42,6 +42,27 @@ Router.route('/disenadores', {
   layoutTemplate: 'layout'
 });
 
+/**
+ * Ads
+ */
+Router.route('ads/:_id', function() {
+  var ad = Ads.findOne(this.params._id);
+  Ads.update(ad._id, { $inc: { clicks: 1 } });
+
+  var adUrl = url.parse(ad.url, true);
+
+  var query = {
+    utm_source: 'Decomarias.cl',
+    utm_medium: 'banner',
+    utm_content: ad._id,
+    utm_campaign: ad.location
+  }
+
+  adUrl.query = _.extend(adUrl.query, query);
+  adUrl.search = null;
+
+  this.response.end('<script>window.location.replace("' + adUrl.format() + '");</script>')
+}, { where: 'server', name: 'ad.url' });
 
 
 /**

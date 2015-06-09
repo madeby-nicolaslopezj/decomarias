@@ -37,6 +37,7 @@ Template.categoriesShow.helpers({
     return getSubcategories(Router.current().params.value).length > 1;
   },
   getImageHeight: function() {
+    rwindow.$width()
     var info = this.image.info;
     var colWidth = $('.masonry .l3 .card-panel').width();
     var finalHeight = (info.height * colWidth) / info.width;

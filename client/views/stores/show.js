@@ -18,6 +18,7 @@ Template.storesShow.helpers({
     return Products.find({ storeId: Router.current().params._id }, { sort: { createdAt: 1 } });
   },
   getImageHeight: function() {
+    rwindow.$width()
     var info = this.image.info;
     var colWidth = $('.masonry .l3 .card-panel').width();
     var finalHeight = (info.height * colWidth) / info.width;

@@ -85,3 +85,20 @@ Designers = new orion.collection('designers', {
     ]
   }
 });
+
+Ads = new orion.collection('ads', {
+  singularName: 'anuncio', 
+  pluralName: 'anuncios', 
+  title: 'Anuncios',
+  link: {
+    title: 'Anuncios' 
+  },
+  tabular: {
+    columns: [
+      { data: 'title', title: 'Titulo' },
+      orion.attributeColumn('image', 'image', 'Imagen'),
+      { data: 'clicks', title: 'Clicks' },
+      { data: 'views', title: 'Vistas' },
+    ]
+  }
+});
