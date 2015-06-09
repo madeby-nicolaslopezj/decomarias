@@ -55,7 +55,7 @@ Router.route('ads/:_id', function() {
 
   Ads.update(ad._id, { $inc: { clicks: 1 } });
 
-  var adUrl = url.parse(ad.url, true);
+  var adUrl = UrlUtils.parse(ad.url, true);
 
   var query = {
     utm_source: 'Decomarias.cl',
@@ -66,7 +66,8 @@ Router.route('ads/:_id', function() {
 
   adUrl.query = _.extend(query, adUrl.query);
   adUrl.search = null;
-  this.response.end('<script>window.location.replace("' + adUrl.format() + '");</script>')
+  //this.response.end(UrlUtils.format(adUrl));
+  this.response.end('<script>window.location.replace("' + UrlUtils.format(adUrl) + '");</script>')
 }, { where: 'server', name: 'ad.url' });
 
 

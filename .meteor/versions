@@ -79,6 +79,7 @@ orionjs:lang-es@1.1.2
 orionjs:materialize@1.1.5
 orionjs:relationships@1.1.2
 orionjs:s3@1.1.0
+peerlibrary:url-utils@0.4.0_2
 random@1.0.3
 reactive-dict@1.1.0
 reactive-var@1.0.5
