@@ -18,44 +18,50 @@
     {{/ if }}
     <div class="section">
       <div class="">
-        <div class="row masonry">
-          <div class="col s12 m6 l3">
-            <div class="card-panel">
-              <p><b>{{ currentCategory.label }}</b></p>
-              {{# each availableTypes }}
-                <p class="types">
-                  <span class="child-category-box">
-                    {{# if isTypeSelected }}
-                      <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}" checked="checked" />
-                    {{ else }}
-                      <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}"/>
-                    {{/ if }}
-                    <label for="filled-in-box-{{ _id }}">{{ type }}</label>
-                  </span>
-                </p>
-              {{/ each }}
-            </div>
-          </div>
-          {{# each products }}
-            <div class="col s12 m6 l3">
-              <a href="{{ pathFor 'products.show' }}">
-                <div class="card">
-                  <div class="card-image waves-effect waves-block waves-light" style="height: {{ getImageHeight }}px; background-color: {{ image.info.backgroundColor }}">
-                    <img data-original="{{ image.url }}">
-                  </div>
-                  <div class="card-content">
-                    <span class="card-title grey-text text-darken-4">{{ name }}</span>
-                    <p class="grey-text text-darken-4">{{ description }}</p>
-                    {{# if price }}
-                      <p class="grey-text text-darken-4">${{ format price }}</p>
-                    {{/ if }}
-                  </div>
-                </div>
-              </a>
-            </div>
-          {{/ each }}
+        <div class="row">
+          <div class="col s12 m6 l3 example-width"></div>
         </div>
-        
+        <div class="row masonry">
+          {{# if Template.subscriptionsReady }}
+            <div class="col s12 m6 l3">
+              <div class="card-panel">
+                <p><b>{{ currentCategory.label }}</b></p>
+                {{# each availableTypes }}
+                  <p class="types">
+                    <span class="child-category-box">
+                      {{# if isTypeSelected }}
+                        <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}" checked="checked" />
+                      {{ else }}
+                        <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}"/>
+                      {{/ if }}
+                      <label for="filled-in-box-{{ _id }}">{{ type }}</label>
+                    </span>
+                  </p>
+                {{/ each }}
+              </div>
+            </div>
+            {{# each products }}
+              <div class="col s12 m6 l3">
+                <a href="{{ pathFor 'products.show' }}">
+                  <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light" style="height: {{ getImageHeight }}px; background-color: {{ image.info.backgroundColor }}">
+                      <img data-original="{{ image.url }}">
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title grey-text text-darken-4">{{ name }}</span>
+                      <p class="grey-text text-darken-4">{{ description }}</p>
+                      {{# if price }}
+                        <p class="grey-text text-darken-4">${{ format price }}</p>
+                      {{/ if }}
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {{/ each }}
+          {{ else }}
+            {{> loading }}
+          {{/ if }}
+        </div>
       </div>
     </div>
   </div>

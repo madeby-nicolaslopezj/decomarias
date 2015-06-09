@@ -1,8 +1,20 @@
+Template.categoriesShow.onCreated(function () {
+  var self = this;
+  self.autorun(function () {
+    self.subscribe('categories', Router.current().params.value);
+  });
+  self.autorun(function() {
+    var ids = Session.get('selectedTypes') || [];
+    self.subscribe('productsByCategory', ids);
+  })
+});
+
 Template.categoriesShow.onRendered(function() {
   var self = this;
-  self.subscribe('categories', Router.current().params.value);
   self.$('.parallax').parallax();
   self.autorun(function() {
+    if (!Template.instance().subscriptionsReady()) return;
+    
     if (getSubcategories(Router.current().params.value).length > 0) {
       Tracker.afterFlush(function () {
         Session.set('currentSubcategory', getSubcategories(Router.current().params.value)[0]);
@@ -13,17 +25,12 @@ Template.categoriesShow.onRendered(function() {
     }
   })
 
+  
   self.autorun(function() {
-    var ids = Session.get('selectedTypes');
-    if (!ids) {
-      return;
-    }
-    self.subscribe('productsByCategory', ids);
-  })
+    if (!Template.instance().subscriptionsReady()) return;
 
-  var container = document.querySelector('.masonry');
-  var msnry = new Masonry(container, { itemSelector: '.col' });
-  self.autorun(function() {
+    var container = document.querySelector('.masonry');
+    var msnry = new Masonry(container, { itemSelector: '.col' });
     var ids = Session.get('selectedTypes') || [];
     Products.find({ category: { $in: ids } }).count();
     Tracker.afterFlush(function () {
@@ -42,7 +49,7 @@ Template.categoriesShow.helpers({
   getImageHeight: function() {
     rwindow.$width()
     var info = this.image.info;
-    var colWidth = $('.masonry .l3 .card-panel').width();
+    var colWidth = $('.example-width').width();
     var finalHeight = (info.height * colWidth) / info.width;
     return finalHeight;
   },
