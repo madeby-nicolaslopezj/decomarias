@@ -47,6 +47,12 @@ Router.route('/disenadores', {
  */
 Router.route('ads/:_id', function() {
   var ad = Ads.findOne(this.params._id);
+
+  if (!ad.url) {
+    this.response.end('Error');
+    return;
+  }
+
   Ads.update(ad._id, { $inc: { clicks: 1 } });
 
   var adUrl = url.parse(ad.url, true);
@@ -58,9 +64,8 @@ Router.route('ads/:_id', function() {
     utm_campaign: ad.location
   }
 
-  adUrl.query = _.extend(adUrl.query, query);
+  adUrl.query = _.extend(query, adUrl.query);
   adUrl.search = null;
-
   this.response.end('<script>window.location.replace("' + adUrl.format() + '");</script>')
 }, { where: 'server', name: 'ad.url' });
 

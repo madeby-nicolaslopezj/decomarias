@@ -97,6 +97,7 @@ Ads = new orion.collection('ads', {
     columns: [
       { data: 'title', title: 'Titulo' },
       orion.attributeColumn('image', 'image', 'Imagen'),
+      { data: 'count', title: 'Probabilidad' },
       { data: 'clicks', title: 'Clicks' },
       { data: 'views', title: 'Vistas' },
     ]

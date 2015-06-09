@@ -20,5 +20,12 @@ Template.storesIndex.onRendered(function() {
 Template.storesIndex.helpers({
   stores: function() {
     return Stores.find();
+  },
+  getImageHeight: function () {
+    rwindow.$width()
+    var info = this.image.info;
+    var colWidth = $('.example-width').width();
+    var finalHeight = (info.height * colWidth) / info.width;
+    return finalHeight;
   }
 });

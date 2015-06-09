@@ -15,6 +15,11 @@ Ads.attachSchema(new SimpleSchema({
     allowedValues: ['home-top', 'home-right'],
     label: 'Ubicación'
   },
+  count: {
+    type: Number,
+    defaultValue: 1,
+    label: 'Probabilidad de mostrarse'
+  },
   clicks: {
     type: Number,
     defaultValue: 0,
@@ -28,5 +33,6 @@ Ads.attachSchema(new SimpleSchema({
     autoform: {
       omit: true
     }
-  }
+  },
+  createdAt: orion.attribute('createdAt')
 }));
