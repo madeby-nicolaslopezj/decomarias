@@ -29,8 +29,8 @@
       <div class="col s12 m6 l3">
         <a href="{{ pathFor 'products.show' }}">
           <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img src="{{ image.url }}" height="{{ getImageHeight }}" style="background-color: {{ image.info.backgroundColor }}">
+            <div class="card-image waves-effect waves-block waves-light" style="height: {{ getImageHeight }}px; background-color: {{ image.info.backgroundColor }}">
+              <img data-original="{{ image.url }}">
             </div>
             <div class="card-content">
               <span class="card-title grey-text text-darken-4">{{ name }}</span>
@@ -46,5 +46,6 @@
   </div>
   <div class="center">
     {{> esLoadMoreButton index="products" class="btn" content="Cargar Mas" }}
+    <br>
   </div>
 </template>

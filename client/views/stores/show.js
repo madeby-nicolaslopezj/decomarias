@@ -6,7 +6,12 @@ Template.storesShow.onRendered(function() {
   var msnry = new Masonry(container, { itemSelector: '.col' });
   self.autorun(function() {
     Products.find({ storeId: Router.current().params._id }).count();
-    var msnry = new Masonry(container, { itemSelector: '.col' });
+    Tracker.afterFlush(function () {
+      var msnry = new Masonry(container, { itemSelector: '.col' });
+      $('img[data-original]').lazyload({
+        effect: 'fadeIn'
+      });
+    });
   })
 })
 
@@ -19,6 +24,7 @@ Template.storesShow.helpers({
   },
   getImageHeight: function() {
     rwindow.$width()
+    if (!this.image) return;
     var info = this.image.info;
     var colWidth = $('.masonry .l3 .card-panel').width();
     var finalHeight = (info.height * colWidth) / info.width;

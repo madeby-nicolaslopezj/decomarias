@@ -10,6 +10,9 @@ Template.search.onRendered(function() {
   var remason = function() {
     Meteor.setTimeout(function() {
       var msnry = new Masonry(container, { itemSelector: '.col' });
+       $('img[data-original]').lazyload({
+        effect: 'fadeIn'
+      });
     }, 1);
   }
 

@@ -100,6 +100,7 @@ Ads = new orion.collection('ads', {
       { data: 'count', title: 'Probabilidad' },
       { data: 'clicks', title: 'Clicks' },
       { data: 'views', title: 'Vistas' },
+      orion.attributeColumn('createdAt', 'createdAt', 'Fecha de creación'),
     ]
   }
 });

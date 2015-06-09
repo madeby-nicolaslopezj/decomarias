@@ -28,6 +28,9 @@ Template.categoriesShow.onRendered(function() {
     Products.find({ category: { $in: ids } }).count();
     Tracker.afterFlush(function () {
       var msnry = new Masonry(container, { itemSelector: '.col' });
+      $('img[data-original]').lazyload({
+        effect: 'fadeIn'
+      });
     });
   })
 })
