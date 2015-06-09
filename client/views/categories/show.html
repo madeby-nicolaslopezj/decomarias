@@ -22,24 +22,24 @@
           <div class="col s12 m6 l3 example-width"></div>
         </div>
         <div class="row masonry">
-          {{# if Template.subscriptionsReady }}
-            <div class="col s12 m6 l3">
-              <div class="card-panel">
-                <p><b>{{ currentCategory.label }}</b></p>
-                {{# each availableTypes }}
-                  <p class="types">
-                    <span class="child-category-box">
-                      {{# if isTypeSelected }}
-                        <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}" checked="checked" />
-                      {{ else }}
-                        <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}"/>
-                      {{/ if }}
-                      <label for="filled-in-box-{{ _id }}">{{ type }}</label>
-                    </span>
-                  </p>
-                {{/ each }}
-              </div>
+          <div class="col s12 m6 l3">
+            <div class="card-panel">
+              <p><b>{{ currentCategory.label }}</b></p>
+              {{# each availableTypes }}
+                <p class="types">
+                  <span class="child-category-box">
+                    {{# if isTypeSelected }}
+                      <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}" checked="checked" />
+                    {{ else }}
+                      <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}"/>
+                    {{/ if }}
+                    <label for="filled-in-box-{{ _id }}">{{ type }}</label>
+                  </span>
+                </p>
+              {{/ each }}
             </div>
+          </div>
+          {{# if Template.subscriptionsReady }}
             {{# each products }}
               <div class="col s12 m6 l3">
                 <a href="{{ pathFor 'products.show' }}">
@@ -65,4 +65,9 @@
       </div>
     </div>
   </div>
+  <style type="text/css">
+  body {
+    min-height: {{ getDocMinHeight }}px;
+  }
+  </style>
 </template>

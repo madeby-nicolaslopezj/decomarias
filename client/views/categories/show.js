@@ -12,23 +12,27 @@ Template.categoriesShow.onCreated(function () {
 Template.categoriesShow.onRendered(function() {
   var self = this;
   self.$('.parallax').parallax();
+
   self.autorun(function() {
     if (!Template.instance().subscriptionsReady()) return;
     
     if (getSubcategories(Router.current().params.value).length > 0) {
       Tracker.afterFlush(function () {
-        Session.set('currentSubcategory', getSubcategories(Router.current().params.value)[0]);
-        var types = _.pluck(getTypes(Router.current().params.value, Session.get('currentSubcategory')), '_id');
-        Session.set('selectedTypes', types);
+        if (!Session.get('currentSubcategory')) {
+          Session.set('currentSubcategory', getSubcategories(Router.current().params.value)[0]);
+          var types = _.pluck(getTypes(Router.current().params.value, Session.get('currentSubcategory')), '_id');
+          Session.set('selectedTypes', types);
+        }
         $('ul.tabs').tabs();
+        Meteor.setTimeout(function () {
+          Session.set('docMinHeight', 0);
+        }, 300);
       });
     }
   })
 
   
   self.autorun(function() {
-    if (!Template.instance().subscriptionsReady()) return;
-
     var container = document.querySelector('.masonry');
     var msnry = new Masonry(container, { itemSelector: '.col' });
     var ids = Session.get('selectedTypes') || [];
@@ -82,11 +86,15 @@ Template.categoriesShow.helpers({
     var withPrice = Products.find({ category: { $in: ids }, price: { $ne: null }}, { sort: { price: 1 } }).fetch()
     var withoutPrice = Products.find({ category: { $in: ids }, price: null}, { sort: { price: 1 } }).fetch()
     return _.union(withPrice, withoutPrice);
+  },
+  getDocMinHeight: function() {
+    return Session.get('docMinHeight');
   }
 });
 
 Template.categoriesShow.events({
   'click ul.tabs a': function () {
+    Session.set('docMinHeight', $(document).height());
     Session.set('currentSubcategory', String(this))
     var types = _.pluck(getTypes(Router.current().params.value, Session.get('currentSubcategory')), '_id');
     Session.set('selectedTypes', types);
