@@ -1,6 +1,8 @@
-Template.storesIndex.onRendered(function() {
+Template.storesIndex.onCreated(function() {
   this.subscribe('stores')
+});
 
+Template.storesIndex.onRendered(function() {
   var container = document.querySelector('.masonry');
   var msnry = new Masonry(container, { itemSelector: '.col' });
   this.autorun(function() {

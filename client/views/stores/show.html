@@ -2,56 +2,63 @@
   <div class="container">
     <p class="center"><br><img src="{{ store.logo.url }}"></p>
   </div>
+  <div class="row">
+    <div class="col s12 m6 l3 example-width"></div>
+  </div>
   <div class="row masonry">
-    <div class="col s12 m6 l3">
-      <div class="card-panel">
-        {{# with store }}
-          <h5>
-            <a class="grey-text text-darken-4" href="{{ pathFor 'stores.show' }}">
-              {{ name }}
-            </a>
-          </h5>
-          <p class="description-with-icon">
-            <i class="mdi-communication-phone"></i>
-            {{ phone }}
-          </p>
-          <p class="description-with-icon">
-            <i class="mdi-communication-email"></i>
-            {{ email }}
-          </p>
-          <p class="description-with-icon">
-            <i class="mdi-maps-store-mall-directory"></i>
-            {{ direction }}
-          </p>
-          {{# if website }}
-            <p class="description-with-icon">
-              <i class="mdi-social-public"></i>
-              <a href="{{ website }}">
-                {{ website }}
-              </a>
-            </p>
-          {{/ if }}
-
-        {{/ with }}
-      </div>
-    </div>
-    {{# each products }}
+    {{# if Template.subscriptionsReady }}
       <div class="col s12 m6 l3">
-        <a href="{{ pathFor 'products.show' }}">
-          <div class="card">
-            <div class="card-image waves-effect waves-block waves-light" style="height: {{ getImageHeight }}px; background-color: {{ image.info.backgroundColor }}">
-              <img data-original="{{ image.url }}">
-            </div>
-            <div class="card-content">
-              <span class="card-title grey-text text-darken-4">{{ name }}</span>
-              <p class="grey-text text-darken-4">{{ description }}</p>
-              {{# if price }}
-                <p class="grey-text text-darken-4">${{ format price }}</p>
-              {{/ if }}
-            </div>
-          </div>
-        </a>
+        <div class="card-panel">
+          {{# with store }}
+            <h5>
+              <a class="grey-text text-darken-4" href="{{ pathFor 'stores.show' }}">
+                {{ name }}
+              </a>
+            </h5>
+            <p class="description-with-icon">
+              <i class="mdi-communication-phone"></i>
+              {{ phone }}
+            </p>
+            <p class="description-with-icon">
+              <i class="mdi-communication-email"></i>
+              {{ email }}
+            </p>
+            <p class="description-with-icon">
+              <i class="mdi-maps-store-mall-directory"></i>
+              {{ direction }}
+            </p>
+            {{# if website }}
+              <p class="description-with-icon">
+                <i class="mdi-social-public"></i>
+                <a href="{{ website }}">
+                  {{ website }}
+                </a>
+              </p>
+            {{/ if }}
+
+          {{/ with }}
+        </div>
       </div>
-    {{/ each }}
+      {{# each products }}
+        <div class="col s12 m6 l3">
+          <a href="{{ pathFor 'products.show' }}">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light" style="height: {{ getImageHeight }}px; background-color: {{ image.info.backgroundColor }}">
+                <img data-original="{{ image.url }}">
+              </div>
+              <div class="card-content">
+                <span class="card-title grey-text text-darken-4">{{ name }}</span>
+                <p class="grey-text text-darken-4">{{ description }}</p>
+                {{# if price }}
+                  <p class="grey-text text-darken-4">${{ format price }}</p>
+                {{/ if }}
+              </div>
+            </div>
+          </a>
+        </div>
+      {{/ each }}
+    {{ else }}
+      {{> loading }}
+    {{/ if }}
   </div>
 </template>

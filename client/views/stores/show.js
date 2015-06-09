@@ -1,10 +1,17 @@
+Template.storesShow.onCreated(function () {
+  var self = this;
+  self.autorun(function () {
+    self.subscribe("store", Router.current().params._id);
+  });
+});
+
 Template.storesShow.onRendered(function() {
   var self = this;
-  self.subscribe('store', Router.current().params._id);
-
-  var container = document.querySelector('.masonry');
-  var msnry = new Masonry(container, { itemSelector: '.col' });
   self.autorun(function() {
+    if (!Template.instance().subscriptionsReady()) return;
+
+    var container = document.querySelector('.masonry');
+    var msnry = new Masonry(container, { itemSelector: '.col' });
     Products.find({ storeId: Router.current().params._id }).count();
     Tracker.afterFlush(function () {
       var msnry = new Masonry(container, { itemSelector: '.col' });
@@ -26,7 +33,7 @@ Template.storesShow.helpers({
     rwindow.$width()
     if (!this.image) return;
     var info = this.image.info;
-    var colWidth = $('.masonry .l3 .card-panel').width();
+    var colWidth = $('.example-width').width();
     var finalHeight = (info.height * colWidth) / info.width;
     return finalHeight;
   },
