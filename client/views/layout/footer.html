@@ -1,0 +1,27 @@
+<template name="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <br>
+        <div class="row">
+          <div class="col s12 m10 l8">
+            <img src="{{ dict 'footer.logo.url' }}">
+          </div>
+        </div>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">{{ dict 'footer.linksTitle' }}</h5>
+        <ul>
+          {{# each pages }}
+            <li><a href="#!">{{ title }}</a></li>
+          {{/ each }}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2015 Decomarías
+    </div>
+  </div>
+</template>

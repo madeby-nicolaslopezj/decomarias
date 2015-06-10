@@ -1,8 +1,15 @@
 <template name="layout">
-  {{> header }}
-  {{# if dictionaryReady }}
-    {{> yield }}
-  {{/ if }}
+  <header>
+    {{> header }}
+  </header>
+  <main>
+    {{# if dictionaryReady }}
+      {{> yield }}
+    {{/ if }}
+  </main>
+  <footer class="page-footer marias-green-with-text">
+    {{> footer }}
+  </footer>
 </template>
 <template name="loading">
   <br>

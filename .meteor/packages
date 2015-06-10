@@ -15,6 +15,7 @@ orionjs:image-attribute
 orionjs:relationships
 orionjs:froala
 orionjs:lang-es
+orionjs:pages
 reywood:publish-composite
 dburles:collection-helpers
 less

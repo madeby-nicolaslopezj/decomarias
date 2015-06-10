@@ -29,7 +29,7 @@ $marias-grey: #6f7073;
 }
 
 .marias-green-with-text {
-  background-color: $marias-green;
+  background-color: $marias-green !important;
   color: $marias-grey !important;
   * {
     color: $marias-grey !important;
