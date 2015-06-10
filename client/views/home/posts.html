@@ -4,9 +4,11 @@
       <div class="col s12 l6">
         <a href="{{ pathFor 'posts.show' }}">
           <div class="the-image" style="background-color: {{ image.info.backgroundColor }}; background-image: url({{ image.url }})">
-            <div class="center-align">
-              <h3 class="title" style="color: {{ image.info.primaryColor }};">{{ title }}</h3>
-              <h5 class="caption" style="color: {{ image.info.secondaryColor }};">{{ caption }}</h5>
+            <div class="info valign-wrapper" style="background-color: {{ image.info.backgroundColor }};">
+              <div class="valign">
+                <h3 class="title" style="color: {{ image.info.primaryColor }};">{{ title }}</h3>
+                <h5 class="caption" style="color: {{ image.info.secondaryColor }};">{{ caption }}</h5>
+              </div>
             </div>
           </div>
         </a>
