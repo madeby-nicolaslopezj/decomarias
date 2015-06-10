@@ -1,7 +1,7 @@
 <template name="homePosts">
   <div class="row home-posts">
     {{# each posts }}
-      <div class="col s12 l6">
+      <div class="col s12 m6">
         <a href="{{ pathFor 'posts.show' }}">
           <div class="the-image" style="background-color: {{ image.info.backgroundColor }}; background-image: url({{ image.url }})">
             <div class="info valign-wrapper" style="background-color: {{ image.info.backgroundColor }};">
@@ -12,6 +12,7 @@
             </div>
           </div>
         </a>
+        <br>
       </div>
     {{/ each }}
   </div>
