@@ -33,6 +33,8 @@ Template.categoriesShow.onRendered(function() {
 
   
   self.autorun(function() {
+    if (!Template.instance().subscriptionsReady()) return;
+    
     var container = document.querySelector('.masonry');
     var msnry = new Masonry(container, { itemSelector: '.col' });
     var ids = Session.get('selectedTypes') || [];
