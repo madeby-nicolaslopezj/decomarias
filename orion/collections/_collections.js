@@ -104,3 +104,19 @@ Ads = new orion.collection('ads', {
     ]
   }
 });
+
+Posts = new orion.collection('posts', {
+  singularName: 'Post', 
+  pluralName: 'Posts', 
+  title: 'Blog',
+  link: {
+    title: 'Blog' 
+  },
+  tabular: {
+    columns: [
+      { data: 'title', title: 'Título' },
+      { data: 'caption', title: 'Caption' },
+      orion.attributeColumn('image', 'image', 'Imagen')
+    ]
+  }
+});

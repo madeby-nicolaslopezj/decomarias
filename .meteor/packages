@@ -13,6 +13,7 @@ orionjs:filesystem
 orionjs:s3
 orionjs:image-attribute
 orionjs:relationships
+orionjs:froala
 orionjs:lang-es
 reywood:publish-composite
 dburles:collection-helpers

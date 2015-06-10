@@ -42,6 +42,11 @@ Router.route('/disenadores', {
   layoutTemplate: 'layout'
 });
 
+Router.route('/posts/:_id', {
+  name: 'posts.show',
+  layoutTemplate: 'layout'
+});
+
 /**
  * Ads
  */

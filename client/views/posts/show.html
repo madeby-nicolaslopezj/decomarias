@@ -1,0 +1,20 @@
+<template name="postsShow">
+  {{# with post }}
+    <div class="container posts-show">
+      <div class="row">
+        <div class="col s12 l8 offset-l2">
+          <h1 class="page-title">{{ title }}</h1>
+          <p class="caption">{{ caption }}</p>
+          <p class="center">
+            <img src="{{ image.url }}" data-caption="{{ title }}">
+          </p>
+          <div class="content">
+            {{{ body }}}
+          </div>
+        </div>
+      </div>
+    </div>
+  {{ else }}  
+    {{> loading }}
+  {{/ with }}
+</template>

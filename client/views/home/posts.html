@@ -1,0 +1,17 @@
+<template name="homePosts">
+  <div class="slider">
+    <ul class="slides">
+      {{# each posts }}
+        <li>
+          <a href="{{ pathFor 'posts.show' }}">
+            <img src="{{ image.url }}">
+            <div class="caption center-align">
+              <h3>{{ title }}</h3>
+              <h5 class="light grey-text text-lighten-3">{{ caption }}</h5>
+            </div>
+          </a>
+        </li>
+      {{/ each }}
+    </ul>
+  </div>
+</template>
