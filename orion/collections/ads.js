@@ -12,7 +12,7 @@ Ads.attachSchema(new SimpleSchema({
   },
   location: {
     type: String,
-    allowedValues: ['home-top', 'home-right'],
+    allowedValues: ['home-top', 'home-right', 'home-right-2'],
     label: 'Ubicación'
   },
   count: {

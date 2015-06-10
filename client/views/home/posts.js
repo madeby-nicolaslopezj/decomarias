@@ -12,6 +12,6 @@ Template.homePosts.onRendered(function() {
 
 Template.homePosts.helpers({
   posts: function () {
-    return Posts.find({}, { limit: 5, sort: { createdAt: -1 } });
+    return Posts.find({}, { limit: 6, sort: { createdAt: -1 } });
   }
 });
