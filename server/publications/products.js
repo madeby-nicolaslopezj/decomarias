@@ -14,9 +14,9 @@ Meteor.publishComposite('product', function(productId) {
   }
 });
 
-Meteor.publish('productsByCategory', function (ids) {
-  check(ids, [String]);
-  return Products.find({ category: { $in: ids } });
+Meteor.publish('productsByCategory', function (id) {
+  check(id, String);
+  return Products.find({ category: id });
 });
 
 Meteor.publish('allProducts', function() {

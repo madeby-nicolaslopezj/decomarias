@@ -6,11 +6,11 @@
 
 .home-links {
   text-align: center;
-  li {
+  > ul > li {
     display: inline-block;
     text-align: center;
     padding: 14px 0;
-    a {
+    > a {
       padding: 15px;
       -webkit-transition: background-color 300ms;
       -moz-transition: background-color 300ms;

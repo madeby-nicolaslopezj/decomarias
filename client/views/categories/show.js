@@ -4,45 +4,32 @@ Template.categoriesShow.onCreated(function () {
     self.subscribe('categories', Router.current().params.value);
   });
   self.autorun(function() {
-    var ids = Session.get('selectedTypes') || [];
-    self.subscribe('productsByCategory', ids);
+    var id = Router.current().params.type || '';
+    self.subscribe('productsByCategory', id);
   })
 });
 
 Template.categoriesShow.onRendered(function() {
   var self = this;
-  self.$('.parallax').parallax();
-
-  Session.set('currentSubcategory', getSubcategories(Router.current().params.value)[0]);
-  var types = _.pluck(getTypes(Router.current().params.value, Session.get('currentSubcategory')), '_id');
-  Session.set('selectedTypes', types);
+  $('.parallax').parallax();
+  $('.dropdown-button').dropdown({ constrain_width: false });
 
   self.autorun(function() {
-    if (!Template.instance().subscriptionsReady()) return;
-
-    if (getSubcategories(Router.current().params.value).length > 0) {
-      Tracker.afterFlush(function () {
-        if (!Session.get('currentSubcategory')) {
-          Session.set('currentSubcategory', getSubcategories(Router.current().params.value)[0]);
-          var types = _.pluck(getTypes(Router.current().params.value, Session.get('currentSubcategory')), '_id');
-          Session.set('selectedTypes', types);
-        }
-        Meteor.setTimeout(function () {
-          Session.set('docMinHeight', 0);
-        }, 300);
-      });
+    if (!Router.current().params.type) {
+      Router.current().params.type = getFirstTypeIdWithCategory(Router.current().params.value);
+      Router.go('categories.show', Router.current().params, { replaceState: true });
     }
   })
-
 
   self.autorun(function() {
     if (!Template.instance().subscriptionsReady()) return;
 
     var container = document.querySelector('.masonry');
     var msnry = new Masonry(container, { itemSelector: '.col' });
-    var ids = Session.get('selectedTypes') || [];
-    Products.find({ category: { $in: ids } }).count();
+    var id = Router.current().params.type || '';
+    Products.find({ category: id }).count();
     Tracker.afterFlush(function () {
+      $('.dropdown-button').dropdown({ constrain_width: false });
       var msnry = new Masonry(container, { itemSelector: '.col' });
       $('img[data-original]').lazyload({
         effect: 'fadeIn'
@@ -67,17 +54,8 @@ Template.categoriesShow.helpers({
     current.image = orion.dictionary.get('images.' + current.value);
     return current;
   },
-  availableTypes: function() {
-    return getTypes(Router.current().params.value, Session.get('currentSubcategory'));
-  },
-  availablePrices: function() {
-    return Session.get('availablePrices');
-  },
-  isTypeSelected: function() {
-    return _.contains(Session.get('selectedTypes'), this._id);
-  },
-  isPriceSelected: function() {
-    return Session.get('selectedPrices') && _.contains(Session.get('selectedPrices'), this.identifier);
+  types: function() {
+    return getTypes(Router.current().params.value, String(this));
   },
   subcategories: function() {
     return getSubcategories(Router.current().params.value)
@@ -87,42 +65,19 @@ Template.categoriesShow.helpers({
     return Categories.find({ category: item.label });
   },
   products: function() {
-    var ids = Session.get('selectedTypes') || [];
-    var withPrice = Products.find({ category: { $in: ids }, price: { $ne: null }}, { sort: { price: 1 } }).fetch()
-    var withoutPrice = Products.find({ category: { $in: ids }, price: null}, { sort: { price: 1 } }).fetch()
+    var id = Router.current().params.type || '';
+    var withPrice = Products.find({ category: id, price: { $ne: null }}, { sort: { price: 1 } }).fetch()
+    var withoutPrice = Products.find({ category: id, price: null }, { sort: { price: 1 } }).fetch()
     return _.union(withPrice, withoutPrice);
   },
-  getDocMinHeight: function() {
-    return Session.get('docMinHeight');
+  getIdForSubcategory: function() {
+    return String(this).toLowerCase().replace(/\s+/g, '');
   },
-  isSubcategoryActive: function() {
-    return Session.get('currentSubcategory') == String(this) && 'active';
+  getCurrentType: function() {
+    return Categories.findOne(Router.current().params.type);
   }
 });
 
 Template.categoriesShow.events({
-  'click .tabs-container a': function () {
-    Session.set('docMinHeight', $(document).height());
-    Session.set('currentSubcategory', String(this))
-    var types = _.pluck(getTypes(Router.current().params.value, Session.get('currentSubcategory')), '_id');
-    Session.set('selectedTypes', types);
-  },
-  'click .types input': function() {
-    if (_.contains(Session.get('selectedTypes'), this._id)) {
-      Session.set('selectedTypes', _.without(Session.get('selectedTypes'), this._id))
-    } else {
-      var types = Session.get('selectedTypes');
-      types.push(this._id);
-      Session.set('selectedTypes', types)
-    }
-  },
-  'click .prices input': function() {
-    if (_.contains(Session.get('selectedPrices'), this.identifier)) {
-      Session.set('selectedPrices', _.without(Session.get('selectedPrices'), this.identifier))
-    } else {
-      var prices = Session.get('selectedPrices');
-      prices.push(this.identifier);
-      Session.set('selectedPrices', prices);
-    }
-  }
+
 });

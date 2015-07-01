@@ -10,38 +10,30 @@
       <ul>
         {{# each subcategories }}
           <li>
-            <a href="#" class="uppercase separated {{ isSubcategoryActive }}">
+            <a href="#" class="dropdown-button uppercase separated {{ isSubcategoryActive }}"  data-activates="dropdown-{{ getIdForSubcategory }}">
               {{ this }}
             </a>
+            <ul id='dropdown-{{ getIdForSubcategory }}' class="dropdown-content">
+              {{# each types }}
+                <li><a href="{{ pathFor 'categories.show' type=_id value=getCategoryValue }}">{{ type }}</a></li>
+              {{/ each }}
+            </ul>
           </li>
         {{/ each }}
       </ul>
     </div>
     {{/ if }}
+    <p style="margin-left: 10px;">
+      {{# with getCurrentType }}
+        <span class="grey-text">{{ category }} > {{ subcategory }} ></span> {{ type }}
+      {{/ with }}
+    </p>
     <div class="section">
       <div class="">
-        <div class="row">
+        <div class="row" style="margin-bottom: 0">
           <div class="col s12 m6 l3 example-width"></div>
         </div>
         <div class="row masonry">
-          <div class="col s12 m6 l3">
-            <div class="card-panel">
-              <p><b>{{ currentCategory.label }}</b></p>
-              {{# each availableTypes }}
-                <p class="types">
-                  <span class="child-category-box">
-                    {{# if isTypeSelected }}
-                      <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}" checked="checked" />
-                    {{ else }}
-                      <input category="{{ _id }}" type="checkbox" class="filled-in" id="filled-in-box-{{ _id }}"/>
-                    {{/ if }}
-                    <label for="filled-in-box-{{ _id }}">{{ type }}</label>
-                  </span>
-                </p>
-              {{/ each }}
-              <p><i class="grey-text">Selecciona las que quieres ver</i></p>
-            </div>
-          </div>
           {{# if Template.subscriptionsReady }}
             {{# each products }}
               <div class="col s12 m6 l3">
@@ -68,9 +60,4 @@
       </div>
     </div>
   </div>
-  <style type="text/css">
-  body {
-    min-height: {{ getDocMinHeight }}px;
-  }
-  </style>
 </template>

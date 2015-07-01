@@ -22,7 +22,7 @@ Router.route('/categorias', {
   layoutTemplate: 'layout'
 });
 
-Router.route('/categorias/:value', {
+Router.route('/categorias/:value/:type?', {
   name: 'categories.show',
   layoutTemplate: 'layout'
 });

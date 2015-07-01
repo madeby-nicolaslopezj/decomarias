@@ -13,3 +13,9 @@ Categories.attachSchema(new SimpleSchema({
     label: 'Tipo'
   }
 }));
+
+Categories.helpers({
+  getCategoryValue: function() {
+    return _.findWhere(topCategories, { label: this.category }).value;
+  }
+})
