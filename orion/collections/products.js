@@ -77,6 +77,11 @@ Products.attachSchema(new SimpleSchema({
     type: String,
     label: 'Materialidad'
   },
+  views: {
+    type: Number,
+    label: 'Views',
+    defaultValue: 0
+  },
   createdAt: orion.attribute('createdAt')
 }));
 

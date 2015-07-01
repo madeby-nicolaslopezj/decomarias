@@ -3,7 +3,7 @@ Categories = new orion.collection('categories', {
   pluralName: 'Categorías',
   title: 'Categorías',
   link: {
-    title: 'Categorias' 
+    title: 'Categorias'
   },
   tabular: {
     columns: [
@@ -15,26 +15,27 @@ Categories = new orion.collection('categories', {
 });
 
 Products = new orion.collection('products', {
-  singularName: 'Producto', 
+  singularName: 'Producto',
   pluralName: 'Productos',
   title: 'Productos',
   link: {
-    title: 'Productos' 
+    title: 'Productos'
   },
   tabular: {
     columns: [
       { data: 'name', title: 'Name' },
       { data: 'description', title: 'Descripción' },
+      { data: 'views', title: 'Views' }
     ]
   }
 });
 
 Stores = new orion.collection('stores', {
-  singularName: 'Tienda', 
+  singularName: 'Tienda',
   pluralName: 'Tiendas',
-  title: 'Tiendas', 
+  title: 'Tiendas',
   link: {
-    title: 'Tiendas' 
+    title: 'Tiendas'
   },
   tabular: {
     columns: [
@@ -45,11 +46,11 @@ Stores = new orion.collection('stores', {
 });
 
 Projects = new orion.collection('projects', {
-  singularName: 'Proyecto', 
-  pluralName: 'Proyectos', 
+  singularName: 'Proyecto',
+  pluralName: 'Proyectos',
   title: 'Proyectos',
   link: {
-    title: 'Proyectos' 
+    title: 'Proyectos'
   },
   tabular: {
     columns: [
@@ -59,10 +60,10 @@ Projects = new orion.collection('projects', {
 });
 
 Favorites = new orion.collection('favorites', {
-  singularName: 'Favorite', 
-  pluralName: 'Favorites', 
+  singularName: 'Favorite',
+  pluralName: 'Favorites',
   link: {
-    title: 'Favoritos' 
+    title: 'Favoritos'
   },
   tabular: {
     columns: [
@@ -72,11 +73,11 @@ Favorites = new orion.collection('favorites', {
 });
 
 Designers = new orion.collection('designers', {
-  singularName: 'Diseñador', 
-  pluralName: 'Diseñadores', 
+  singularName: 'Diseñador',
+  pluralName: 'Diseñadores',
   title: 'Diseñadores',
   link: {
-    title: 'Diseñadores' 
+    title: 'Diseñadores'
   },
   tabular: {
     columns: [
@@ -87,11 +88,11 @@ Designers = new orion.collection('designers', {
 });
 
 Ads = new orion.collection('ads', {
-  singularName: 'anuncio', 
-  pluralName: 'anuncios', 
+  singularName: 'anuncio',
+  pluralName: 'anuncios',
   title: 'Anuncios',
   link: {
-    title: 'Anuncios' 
+    title: 'Anuncios'
   },
   tabular: {
     columns: [
@@ -106,11 +107,11 @@ Ads = new orion.collection('ads', {
 });
 
 Posts = new orion.collection('posts', {
-  singularName: 'Post', 
-  pluralName: 'Posts', 
+  singularName: 'Post',
+  pluralName: 'Posts',
   title: 'Blog',
   link: {
-    title: 'Blog' 
+    title: 'Blog'
   },
   tabular: {
     columns: [

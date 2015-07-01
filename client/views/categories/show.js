@@ -1,6 +1,6 @@
 var getSort = function() {
   if (Session.get('currentOrder') == 'populares') {
-    return { price: 1 };
+    return { views: -1 };
   }
   if (Session.get('currentOrder') == 'menor-a-mayor-precio') {
     return { price: 1 };
