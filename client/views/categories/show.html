@@ -23,11 +23,26 @@
       </ul>
     </div>
     {{/ if }}
-    <p style="margin-left: 10px;">
-      {{# with getCurrentType }}
-        <span class="grey-text">{{ category }} > {{ subcategory }} ></span> {{ type }}
-      {{/ with }}
-    </p>
+    <br>
+    <div class="row" style="margin-bottom: 0">
+      <div class="col s12 l4">
+        <p>
+          {{# with getCurrentType }}
+            <span class="grey-text">{{ category }} > {{ subcategory }} ></span> {{ type }}
+          {{/ with }}
+        </p>
+      </div>
+      <div class="col s12 l4 offset-l4 input-field">
+        <select class="order-select">
+          <option value="populares">Mas populares</option>
+          <option value="menor-a-mayor-precio">De menor a mayor precio</option>
+          <option value="mayor-a-menor-precio">De mayor a menor precio</option>
+          <option value="nuevos">Nuevos</option>
+          <option value="antiguos">Antiguos</option>
+        </select>
+        <label>Ordenar por:</label>
+      </div>
+    </div>
     <div class="section">
       <div class="">
         <div class="row" style="margin-bottom: 0">
@@ -35,7 +50,25 @@
         </div>
         <div class="row masonry">
           {{# if Template.subscriptionsReady }}
-            {{# each products }}
+            {{# each productsWithPrice }}
+              <div class="col s12 m6 l3">
+                <a href="{{ pathFor 'products.show' }}">
+                  <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light" style="height: {{ getImageHeight }}px; background-color: {{ image.info.backgroundColor }}">
+                      <img data-original="{{ image.url }}">
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title grey-text text-darken-4">{{ name }}</span>
+                      <p class="grey-text text-darken-4">{{ description }}</p>
+                      {{# if price }}
+                        <p class="grey-text text-darken-4">${{ format price }}</p>
+                      {{/ if }}
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {{/ each }}
+            {{# each productsWithoutPrice }}
               <div class="col s12 m6 l3">
                 <a href="{{ pathFor 'products.show' }}">
                   <div class="card">
