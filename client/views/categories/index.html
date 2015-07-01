@@ -1,7 +1,7 @@
 <template name="categoriesIndex">
   <div class="row">
     {{# each categories }}
-      <div class="col s6 m3 l2 full-image-row">
+      <div class="col s6 m4 l3 full-image-row">
         <a href="{{ pathFor 'categories.show' }}">
           <div class="full-image-cat" style="background-color: {{ image.info.backgroundColor }};background-image: url({{ image.url }});">
           </div>
@@ -11,7 +11,7 @@
         </a>
       </div>
     {{/ each }}
-    <div class="col s12 full-image-row">
+    <div class="col s6 m4 l3 full-image-row">
       <a href="{{ pathFor 'designers.index' }}">
         <div class="full-image-cat" style="background-color: {{ dict 'images.decoradores.info.backgroundColor' }};background-image: url({{ dict 'images.decoradores.url' }});">
         </div>
