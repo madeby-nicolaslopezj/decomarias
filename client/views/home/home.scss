@@ -17,7 +17,7 @@
       -o-transition: background-color 300ms;
       -ms-transition: background-color 300ms;
       transition: background-color 300ms;
-      &:hover {
+      &:hover, &.active {
         background-color: rgba(0, 0, 0, .05);
       }
     }

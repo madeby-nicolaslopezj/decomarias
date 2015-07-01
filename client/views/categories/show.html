@@ -6,14 +6,16 @@
       </div>
     </div>
     {{# if shouldShowTabs }}
-    <div class="marias-green tabs-container">
-      <div class="container">
-        <ul class="tabs marias-green">
-          {{# each subcategories }}
-            <li class="tab {{ isSubcategoryActive }}"><a subcategory="{{ this }}" href="#">{{ this }}</a></li>
-          {{/ each }}
-        </ul>
-      </div>
+    <div class="marias-green-with-text home-links tabs-container">
+      <ul>
+        {{# each subcategories }}
+          <li>
+            <a href="#" class="uppercase separated {{ isSubcategoryActive }}">
+              {{ this }}
+            </a>
+          </li>
+        {{/ each }}
+      </ul>
     </div>
     {{/ if }}
     <div class="section">

@@ -13,9 +13,13 @@ Template.categoriesShow.onRendered(function() {
   var self = this;
   self.$('.parallax').parallax();
 
+  Session.set('currentSubcategory', getSubcategories(Router.current().params.value)[0]);
+  var types = _.pluck(getTypes(Router.current().params.value, Session.get('currentSubcategory')), '_id');
+  Session.set('selectedTypes', types);
+
   self.autorun(function() {
     if (!Template.instance().subscriptionsReady()) return;
-    
+
     if (getSubcategories(Router.current().params.value).length > 0) {
       Tracker.afterFlush(function () {
         if (!Session.get('currentSubcategory')) {
@@ -23,7 +27,6 @@ Template.categoriesShow.onRendered(function() {
           var types = _.pluck(getTypes(Router.current().params.value, Session.get('currentSubcategory')), '_id');
           Session.set('selectedTypes', types);
         }
-        $('ul.tabs').tabs();
         Meteor.setTimeout(function () {
           Session.set('docMinHeight', 0);
         }, 300);
@@ -31,10 +34,10 @@ Template.categoriesShow.onRendered(function() {
     }
   })
 
-  
+
   self.autorun(function() {
     if (!Template.instance().subscriptionsReady()) return;
-    
+
     var container = document.querySelector('.masonry');
     var msnry = new Masonry(container, { itemSelector: '.col' });
     var ids = Session.get('selectedTypes') || [];
@@ -91,11 +94,14 @@ Template.categoriesShow.helpers({
   },
   getDocMinHeight: function() {
     return Session.get('docMinHeight');
+  },
+  isSubcategoryActive: function() {
+    return Session.get('currentSubcategory') == String(this) && 'active';
   }
 });
 
 Template.categoriesShow.events({
-  'click ul.tabs a': function () {
+  'click .tabs-container a': function () {
     Session.set('docMinHeight', $(document).height());
     Session.set('currentSubcategory', String(this))
     var types = _.pluck(getTypes(Router.current().params.value, Session.get('currentSubcategory')), '_id');
