@@ -25,5 +25,8 @@ Template.productsShow.events({
   },
   'click .btn-add-to-project': function() {
     Meteor.call('addToProject', Router.current().params._id, this._id);
+  },
+  'click .back-btn': function() {
+    window.history.go(-1);
   }
 });

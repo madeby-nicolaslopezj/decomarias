@@ -1,6 +1,7 @@
 Meteor.publishComposite('product', function(productId) {
   check(productId, String);
   Products.update(productId, { $inc: { views: 1 } });
+  ProductViews.insert({ productId: productId });
   return {
     find: function() {
         return Products.find(productId);
@@ -21,5 +22,5 @@ Meteor.publish('productsByCategory', function (id) {
 });
 
 Meteor.publish('allProducts', function() {
-  return Products.find();
+  return Products.find({});
 })

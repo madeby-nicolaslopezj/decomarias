@@ -40,7 +40,11 @@ Stores = new orion.collection('stores', {
   tabular: {
     columns: [
       { data: 'name', title: 'Name' },
-      orion.attributeColumn('user', 'owner', 'Dueño')
+      orion.attributeColumn('user', 'owner', 'Dueño'),
+      {
+        title: 'Exportar Visitas',
+        tmpl: Meteor.isClient && Template.adminExportVisits
+      }
     ]
   }
 });
@@ -121,3 +125,6 @@ Posts = new orion.collection('posts', {
     ]
   }
 });
+
+
+ProductViews = new Mongo.Collection('product_views');

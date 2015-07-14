@@ -8,6 +8,7 @@
     <div class="section">
       <div class="container">
         {{# with product }}
+          <a href="#" class="btn left back-btn"><i class="material-icons">arrow_back</i></a>
           <h1 class="page-title">
             {{ name }}
           </h1>
@@ -106,14 +107,14 @@
                 {{# if website }}
                   <p class="description-with-icon">
                     <i class="mdi-social-public"></i>
-                    <a href="{{ website }}">
+                    <a href="{{ website }}" target="_blank">
                       {{ website }}
                     </a>
                   </p>
                 {{/ if }}
                 <p>
-                  <a class="btn" href="{{ pathFor 'stores.show' }}">
-                    Ver Productos
+                  <a class="marias-green-text-darken" href="{{ pathFor 'stores.show' }}">
+                    Ver más productos de esta tienda
                   </a>
                 </p>
 
@@ -149,5 +150,5 @@
       </div>
     </div>
   </div>
-  
+
 </template>

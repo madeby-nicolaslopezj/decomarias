@@ -26,6 +26,13 @@ orion.dictionary.addDefinition('iluminacion', 'images',
   })
 );
 
+orion.dictionary.addDefinition('exterior', 'images',
+  orion.attribute('image', {
+      label: 'Imagen categoría exterior',
+      optional: true
+  })
+);
+
 orion.dictionary.addDefinition('banos', 'images',
   orion.attribute('image', {
       label: 'Imagen categoría baños',

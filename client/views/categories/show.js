@@ -29,19 +29,18 @@ Template.categoriesShow.onCreated(function () {
 
 Template.categoriesShow.onRendered(function() {
   var self = this;
-  $('.parallax').parallax();
-  $('.dropdown-button').dropdown({ constrain_width: false });
-  $('select').material_select();
 
   if (!Session.get('currentOrder')) {
     Session.set('currentOrder', 'populares');
   }
 
   self.autorun(function() {
-    if (!Router.current().params.type) {
-      Router.current().params.type = getFirstTypeIdWithCategory(Router.current().params.value);
-      Router.go('categories.show', Router.current().params, { replaceState: true });
-    }
+    var current = Router.current();
+    Tracker.afterFlush(function() {
+      $('.parallax').parallax();
+      $('.dropdown-button').dropdown({ constrain_width: false, hover: true });
+      $('select:not(.initialized)').material_select();
+    })
   })
 
   self.autorun(function() {
@@ -52,7 +51,7 @@ Template.categoriesShow.onRendered(function() {
     var id = Router.current().params.type || '';
     Products.find({ category: id }, { sort: getSort() }).count();
     Tracker.afterFlush(function () {
-      $('.dropdown-button').dropdown({ constrain_width: false });
+      $('.dropdown-button').dropdown({ constrain_width: false, hover: true });
       var msnry = new Masonry(container, { itemSelector: '.col' });
       $('img[data-original]').lazyload({
         effect: 'fadeIn',
