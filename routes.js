@@ -94,11 +94,12 @@ Router.route('/admin/store', {
 });
 
 if (Meteor.isClient) {
-  orion.addLink({
+  orion.links.add({
     routeName: 'admin.store.update',
     activeRouteRegex: 'admin.store',
     title: 'Mi Tienda',
     section: 'top',
+    identifier: 'my-store',
     permission: 'updateMyStore'
   });
 }

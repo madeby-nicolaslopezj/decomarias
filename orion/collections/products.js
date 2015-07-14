@@ -95,6 +95,16 @@ Products.helpers({
 });
 
 Products.initEasySearch(['name', 'description'], {
-    'limit' : 20,
-    'use' : 'mongo-db'
+  limit: 20,
+  use: 'mongo-db',
+  query: function(searchString, opts) {
+    var categories = _.pluck(Categories.find({ $or: [ { category: new RegExp(searchString, 'i') }, { subcategory: new RegExp(searchString, 'i') }, { type: new RegExp(searchString, 'i') } ] }, { fields: { _id: 1 } }).fetch(), '_id');
+    var query = EasySearch.getSearcher(this.use).defaultQuery(this, searchString);
+
+    if (_.isArray(query.$or) && _.isArray(categories) && categories) {
+      query.$or.push({ category: { $in: categories } });
+    }
+
+    return query;
+  }
 });

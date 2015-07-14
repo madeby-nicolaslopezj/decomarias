@@ -16,7 +16,8 @@ Template.storesShow.onRendered(function() {
     Tracker.afterFlush(function () {
       var msnry = new Masonry(container, { itemSelector: '.col' });
       $('img[data-original]').lazyload({
-        effect: 'fadeIn'
+        effect: 'fadeIn',
+        placeholder: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
       });
     });
   })
