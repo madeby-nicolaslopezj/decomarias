@@ -63,7 +63,7 @@ Template.categoriesShow.onRendered(function() {
 
 Template.categoriesShow.helpers({
   shouldShowTabs: function() {
-    return getSubcategories(Router.current().params.value).length > 1;
+    return getSubcategories(Router.current().params.value).length > 0;
   },
   getImageHeight: function() {
     rwindow.$width()
@@ -97,7 +97,7 @@ Template.categoriesShow.helpers({
     return Products.find({ category: id, price: null }, { sort: getSort() }).fetch();
   },
   getIdForSubcategory: function() {
-    return String(this).toLowerCase().replace(/\s+/g, '');
+    return String(this).toLowerCase().replace(/\s+/g, '').replace('&', '');
   },
   getCurrentType: function() {
     return Categories.findOne(Router.current().params.type);
