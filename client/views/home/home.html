@@ -2,7 +2,7 @@
   <br>
   <div class="home">
     {{> ads location="home-top" }}
-    <div class="marias-green-with-text home-links">
+    <div class="marias-green-with-text-darken home-links">
       <ul>
         {{# each topCategories }}
           <li>
@@ -12,7 +12,7 @@
           </li>
         {{/ each }}
         <li>
-           <a href="{{ pathFor 'designers.index' }}" class="uppercase separated">
+          <a href="{{ pathFor 'designers.index' }}" class="uppercase separated">
             {{ dict 'texts.tituloDecoradores' 'Diseñadores' }}
           </a>
         </li>

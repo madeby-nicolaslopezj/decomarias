@@ -36,6 +36,14 @@ $marias-grey: #6f7073;
   }
 }
 
+.marias-green-with-text-darken {
+  background-color: $marias-green !important;
+  color: darken($marias-grey, 20%) !important;
+  * {
+    color: darken($marias-grey, 20%) !important;
+  }
+}
+
 .marias-grey {
   background-color: $marias-grey;
 }
