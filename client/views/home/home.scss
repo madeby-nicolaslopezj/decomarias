@@ -10,6 +10,7 @@
     display: inline-block;
     text-align: center;
     padding: 14px 0;
+    
     > a {
       padding: 15px;
       -webkit-transition: background-color 300ms;
@@ -17,9 +18,10 @@
       -o-transition: background-color 300ms;
       -ms-transition: background-color 300ms;
       transition: background-color 300ms;
-      &:hover, &.active {
-        background-color: rgba(0, 0, 0, .05);
-      }
+    }
+
+    &:hover, &.active {
+      background-color: rgba(0, 0, 0, .05);
     }
   }
 }

@@ -3,3 +3,9 @@ Template.header.onRendered(function() {
     closeOnClick: true
   });
 })
+
+Template.header.helpers({
+  getPath: function() {
+    return Router.path('categories.show', { value: this.value });
+  }
+})

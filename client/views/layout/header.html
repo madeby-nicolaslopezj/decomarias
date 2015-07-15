@@ -13,6 +13,24 @@
       </ul>
     </div>
   </nav>
+  {{# unless isActiveRoute regex='home' }}
+    <div class="marias-green-with-text home-links">
+      <ul style="margin:0">
+        {{# each topCategories }}
+          <li class="{{ isActivePath regex=getPath }}">
+            <a href="{{ pathFor 'categories.show' }}" class="uppercase separated">
+              {{ label }}
+            </a>
+          </li>
+        {{/ each }}
+        <li class="{{ isActiveRoute regex='designers' }}">
+           <a href="{{ pathFor 'designers.index' }}" class="uppercase separated">
+            {{ dict 'texts.tituloDecoradores' 'Diseñadores' }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  {{/ unless }}
 </template>
 <template name="headerItems">
   <li class="{{ isActiveRoute regex='search' }}">
@@ -23,11 +41,6 @@
   <li class="{{ isActiveRoute regex='stores' }}">
     <a href="{{ pathFor 'stores.index' }}" class="uppercase separated">
       Tiendas
-    </a>
-  </li>
-  <li class="{{ isActiveRoute regex='categories' }}">
-    <a href="{{ pathFor 'categories.index' }}" class="uppercase separated">
-      Categorías
     </a>
   </li>
   <li>

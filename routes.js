@@ -1,8 +1,4 @@
 Router.route('/', {
-  name: 'construction'
-})
-
-Router.route('/home', {
 	name: 'home',
 	layoutTemplate: 'layout'
 });
