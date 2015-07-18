@@ -1,3 +1,8 @@
+var htmlEntities = function(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+
 sitemaps.add('/sitemap.xml', function() {
 
   var basicRoutes = ['home', 'search', 'categories.index', 'stores.index', 'designers.index'];
@@ -21,8 +26,8 @@ sitemaps.add('/sitemap.xml', function() {
     if (doc.image && doc.image.url) {
       item.images = [{
         loc: doc.image.url,
-        caption: doc.description,
-        title: doc.name
+        caption: htmlEntities(doc.description) || '',
+        title: htmlEntities(doc.name) || ''
       }]
     }
     items.push(item);
@@ -37,7 +42,8 @@ sitemaps.add('/sitemap.xml', function() {
     if (doc.logo && doc.logo.url) {
       item.images = [{
         loc: doc.logo.url,
-        title: doc.name
+        caption: 'Store',
+        title: htmlEntities(doc.name) || ''
       }]
     }
     items.push(item);
@@ -52,8 +58,8 @@ sitemaps.add('/sitemap.xml', function() {
     if (doc.image && doc.image.url) {
       item.images = [{
         loc: doc.image.url,
-        caption: doc.caption,
-        title: doc.title
+        caption: htmlEntities(doc.caption) || '',
+        title: htmlEntities(doc.title) || ''
       }]
     }
     items.push(item);
