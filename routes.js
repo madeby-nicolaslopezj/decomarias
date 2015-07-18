@@ -3,6 +3,7 @@ var onAfterAction = function(title, description, image) {
 		if (!Meteor.isClient) {
 			return;
 		}
+		GAnalytics && GAnalytics.pageview();
 		SEO.set({
 			title: (title && (orion.dictionary.get('seo.title') + ' - ' + title)) || orion.dictionary.get('seo.title'),
 			link: {
