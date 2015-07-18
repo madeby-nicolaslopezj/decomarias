@@ -16,6 +16,7 @@ Categories.attachSchema(new SimpleSchema({
 
 Categories.helpers({
   getCategoryValue: function() {
-    return _.findWhere(topCategories, { label: this.category }).value;
+    var top = _.findWhere(topCategories, { label: this.category });
+    return top && top.value;
   }
 })
