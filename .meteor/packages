@@ -5,6 +5,7 @@
 # but you can also edit it by hand.
 
 meteor-platform
+oliver:phantomjs-shim
 materialize:materialize
 orionjs:core
 orionjs:materialize
@@ -19,12 +20,11 @@ orionjs:pages
 reywood:publish-composite
 dburles:collection-helpers
 less
-digilord:faker
 iamkevingreen:imagesloaded
 sjors:meteor-masonry
 matteodem:easy-search
 fourseven:scss
-gadicohen:reactive-window@1.0.5
+gadicohen:reactive-window
 peerlibrary:url-utils
 meteorhacks:aggregate
 momentjs:moment
