@@ -5,9 +5,9 @@ orion.dictionary.addDefinition('muebles', 'images',
   })
 );
 
-orion.dictionary.addDefinition('pisos', 'images',
+orion.dictionary.addDefinition('pisos-revestimientos', 'images',
   orion.attribute('image', {
-      label: 'Imagen categoría pisos',
+      label: 'Imagen categoría pisos & revestimientos',
       optional: true
   })
 );
