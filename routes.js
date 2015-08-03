@@ -59,12 +59,14 @@ Router.route('/categorias/:value/:type?', {
 			return;
 		}
 		var current = _.findWhere(topCategories, { value: Router.current().params.value });
+		if (!current) return;
     current.image = orion.dictionary.get('images.' + current.value);
 
 		var title = current.label;
 		var image = current.image;
 		if (this.params.type) {
 			var category = Categories.findOne(this.params.type);
+			if (!category) return;
 			title += ' - ' + category.subcategory + ' - ' + category.type;
 		}
 

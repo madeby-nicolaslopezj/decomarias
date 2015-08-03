@@ -97,7 +97,7 @@ Template.categoriesShow.helpers({
     return Products.find({ category: id, price: null }, { sort: getSort() }).fetch();
   },
   getIdForSubcategory: function() {
-    return String(this).toLowerCase().replace(/\s+/g, '').replace('&', '');
+    return String(this).toLowerCase().replace(/\s+/g, '').replace('&', '').replace('/', '');
   },
   getCurrentType: function() {
     return Categories.findOne(Router.current().params.type);
