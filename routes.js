@@ -41,7 +41,7 @@ Router.route('/producto/:_id', {
 			return;
 		}
 		var product = Products.findOne(this.params._id);
-		onAfterAction(product.name, product.description, product.image && product.image.url)();
+		product && onAfterAction(product.name, product.description, product.image && product.image.url)();
 	}
 });
 
@@ -88,7 +88,7 @@ Router.route('/tiendas/:_id', {
 			return;
 		}
 		var store = Stores.findOne(this.params._id);
-		onAfterAction(store.name, null, store.logo && store.logo.url)();
+		store && onAfterAction(store.name, null, store.logo && store.logo.url)();
 	}
 });
 

@@ -15,5 +15,5 @@ Meteor.publish('categoryProducts', function(level1, level2) {
     categories = _.pluck(Categories.find({ level1: level1 }).fetch(), '_id');
   }
 
-  return Products.find({ category: { $in: categories } });
+  return Products.find({ category: { $in: categories }, hidden: { $ne: true } });
 })

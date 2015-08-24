@@ -10,9 +10,9 @@ Meteor.publish('myStore', function() {
 
 Meteor.publish('store', function(storeId) {
   check(storeId, String);
-  return [Stores.find(storeId), Products.find({ storeId: storeId })];
+  return [Stores.find({ _id: storeId, hidden: { $ne: true } }), Products.find({ storeId: storeId, hidden: { $ne: true } })];
 })
 
 Meteor.publish('stores', function() {
-  return Stores.find();
+  return Stores.find({ hidden: { $ne: true } });
 })

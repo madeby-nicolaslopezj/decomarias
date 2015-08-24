@@ -4,7 +4,7 @@ Meteor.publishComposite('product', function(productId) {
   ProductViews.insert({ productId: productId });
   return {
     find: function() {
-        return Products.find(productId);
+        return Products.find({ _id: productId, hidden: { $ne: true } });
     },
     children: [
       {
@@ -18,9 +18,9 @@ Meteor.publishComposite('product', function(productId) {
 
 Meteor.publish('productsByCategory', function (id) {
   check(id, String);
-  return Products.find({ category: id });
+  return Products.find({ category: id, hidden: { $ne: true } });
 });
 
 Meteor.publish('allProducts', function() {
-  return Products.find({});
+  return Products.find({ hidden: { $ne: true } });
 })

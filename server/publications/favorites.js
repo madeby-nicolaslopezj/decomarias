@@ -11,7 +11,7 @@ Meteor.publishComposite('favoritesDetail', function() {
     children: [
       {
         find: function(favorite) {
-          return Products.find(favorite.product);
+          return Products.find({ _id: favorite.product, hidden: { $ne: true } });
         }
       }
     ]

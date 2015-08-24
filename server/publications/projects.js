@@ -7,7 +7,7 @@ Meteor.publishComposite(null, function() {
     children: [
       {
         find: function(project) {
-          return Products.find({ _id: { $in: (project.products || []) } }, { fields: { name: 1, price: 1 } });
+          return Products.find({ _id: { $in: (project.products || []) }, hidden: { $ne: true } }, { fields: { name: 1, price: 1 } });
         }
       }
     ]

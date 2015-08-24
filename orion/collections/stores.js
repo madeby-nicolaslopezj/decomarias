@@ -1,4 +1,8 @@
 Stores.attachSchema(new SimpleSchema({
+  hidden: {
+    type: Boolean,
+    label: 'Escondido'
+  },
   name: {
     type: String,
     label: 'Nombre'

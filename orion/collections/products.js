@@ -1,4 +1,11 @@
 Products.attachSchema(new SimpleSchema({
+  hidden: {
+    type: Boolean,
+    label: 'Escondido',
+    autoform: {
+      omit: true
+    }
+  },
   name: {
     type: String,
     label: 'Nombre'
