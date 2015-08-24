@@ -33,6 +33,11 @@
   {{/ unless }}
 </template>
 <template name="headerItems">
+  <li class="{{ isActiveRoute regex='home' }}">
+    <a href="{{ pathFor 'home' }}" class="uppercase separated">
+      Home
+    </a>
+  </li>
   <li class="{{ isActiveRoute regex='search' }}">
     <a href="{{ pathFor 'search' }}" class="uppercase separated">
       Buscar
