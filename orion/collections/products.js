@@ -2,6 +2,7 @@ Products.attachSchema(new SimpleSchema({
   hidden: {
     type: Boolean,
     label: 'Escondido',
+    optional: true,
     autoform: {
       omit: true
     }
