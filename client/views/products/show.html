@@ -92,6 +92,14 @@
                     {{ name }}
                   </a>
                 </h5>
+
+                {{# if discount }}
+                <p style="margin-top: 10px">
+                  <span class="red-text">{{ discount }}% de descuento</span>
+                  <span class="grey-text text-darken-2">en la tienda nombrando a decomarías</span>
+                </p>
+                {{/ if }}
+
                 <p class="description-with-icon">
                   <i class="mdi-communication-phone"></i>
                   {{ phone }}

@@ -90,7 +90,17 @@ Products.attachSchema(new SimpleSchema({
     label: 'Views',
     defaultValue: 0
   },
-  createdAt: orion.attribute('createdAt')
+  createdAt: orion.attribute('createdAt'),
+  discount: {
+    type: Number,
+    min: 1,
+    max: 100,
+    optional: true,
+    label: 'Descuento',
+    autoform: {
+      omit: true
+    }
+  }
 }));
 
 Products.helpers({

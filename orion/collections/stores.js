@@ -29,5 +29,12 @@ Stores.attachSchema(new SimpleSchema({
   },
   logo: orion.attribute('image', {
     label: 'Logo'
-  })
+  }),
+  discount: {
+    type: Number,
+    min: 1,
+    max: 100,
+    optional: true,
+    label: 'Descuento'
+  }
 }));

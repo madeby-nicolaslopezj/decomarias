@@ -37,6 +37,12 @@
               {{# if price }}
                 <p class="grey-text text-darken-4">${{ format price }}</p>
               {{/ if }}
+              {{# if discount }}
+              <p style="margin-top: 10px">
+                <span class="red-text">{{ discount }}% de descuento</span>
+                <span class="grey-text text-darken-2">en la tienda nombrando a decomarías</span>
+              </p>
+              {{/ if }}
             </div>
           </div>
         </a>

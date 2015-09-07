@@ -1,8 +1,9 @@
 Template.adminExportVisits.events({
   'click .btn': function(event, template) {
     Meteor.call('getStoreViews', this._id, function(error, result) {
-      var csv = 'sep=;%0AID;Nombre;Total;Ultimo mes%0A';
+      var csv = 'sep=;%0AURL;Nombre;Total;Ultimo mes%0A';
       csv += result.map(function(d){
+        d._id = Router.url('products.show', d);
         return _.values(d).map(function(string) { return encodeURI(string); }).join(';');
       })
       .join('%0A');
