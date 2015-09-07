@@ -6,7 +6,7 @@ $marias-grey: #6f7073;
 }
 
 .marias-green-text {
-  color: $marias-green;
+  color: $marias-green !important;
 }
 
 .teal {
@@ -53,5 +53,5 @@ $marias-grey: #6f7073;
 }
 
 .page-title, .marias-green-text-darken  {
-  color: darken($marias-green, 20%);
+  color: darken($marias-green, 20%) !important;
 }
