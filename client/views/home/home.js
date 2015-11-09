@@ -1,5 +1,6 @@
 Template.home.onCreated(function() {
   this.subscribe('homeBanners');
+  this.subscribe('homePosts');
 });
 
 Template.home.onRendered(function() {
@@ -12,6 +13,9 @@ Template.home.onRendered(function() {
 });
 
 Template.home.helpers({
+  posts: function() {
+    return Posts.find({}, { limit: 6, sort: { createdAt: -1 } });
+  },
   banners: function () {
     var pages = [];
     var page = [];

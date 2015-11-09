@@ -1,5 +1,5 @@
 Meteor.publish('homePosts', function () {
-  return Posts.find({}, { limit: 6, sort: { createdAt: -1 }, fields: { body: 0 } });
+  return Posts.find({}, { limit: 6, sort: { createdAt: -1 } });
 });
 
 Meteor.publish('post', function(postId) {
