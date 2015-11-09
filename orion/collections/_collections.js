@@ -1,3 +1,19 @@
+Banners = new orion.collection('banners', {
+  singularName: 'banner',
+  pluralName: 'banners',
+  title: 'Banners',
+  link: {
+    title: 'Home Banners'
+  },
+  tabular: {
+    columns: [
+      { data: 'index', title: 'Posición' },
+      orion.attributeColumn('image', 'image', 'Imagen'),
+      { data: 'url', title: 'URL' }
+    ]
+  }
+});
+
 Categories = new orion.collection('categories', {
   singularName: 'Categoría',
   pluralName: 'Categorías',

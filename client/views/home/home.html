@@ -1,42 +1,31 @@
 <template name="home">
   <br>
   <div class="home">
-    <div class="row">
-      <div class="col s12 m10 offset-m1">
-        {{> ads location="home-top" }}
+    <div class="container center-align">
+      <h3 class="title">Todas las tiendas en un solo lugar!</h3>
+      <div class="slider home-banners">
+        <ul class="slides">
+          {{# each banners }}
+            <li>
+              <div class="row">
+                {{# each this }}
+                  <div class="col s12 m6">
+                    <a href="{{ url }}" target="_blank">
+                      <img src="{{ image.url }}" />
+                    </a>
+                  </div>
+                {{/ each }}
+              </div>
+            </li>
+          {{/ each }}
+        </ul>
       </div>
+      <p class="text text-1">
+        Aprovecha nuestros increibles descuentos!
+      </p>
+      <p class="text text-2 black white-text">
+        Nombrando a Decomarías
+      </p>
     </div>
-    <div class="marias-green-with-text-darken home-links">
-      <ul>
-        {{# each topCategories }}
-          <li>
-            <a href="{{ pathFor 'categories.show' }}" class="uppercase separated">
-              {{ label }}
-            </a>
-          </li>
-        {{/ each }}
-        <li>
-          <a href="{{ pathFor 'designers.index' }}" class="uppercase separated">
-            {{ dict 'texts.tituloDecoradores' 'Diseñadores' }}
-          </a>
-        </li>
-      </ul>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col s12 m9">
-        {{> homePosts }}
-      </div>
-      <div class="col s12 m3">
-        {{> ads location="home-right" }}
-        {{> ads location="home-right-2" }}
-      </div>
-    </div>
-  </div>
-</template>
-
-<template name="bannerSide">
-  <div class="row">
-    <img class="col s12" src="{{ dict 'banners.side.url' }}">
   </div>
 </template>

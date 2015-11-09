@@ -4,9 +4,8 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 oliver:phantomjs-shim
-materialize:materialize
+materialize:materialize@=0.97.0
 orionjs:core
 orionjs:materialize
 accounts-password
@@ -35,3 +34,17 @@ nicolaslopezj:orion-ga
 iron:router
 zimme:active-route
 matb33:collection-hooks
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
