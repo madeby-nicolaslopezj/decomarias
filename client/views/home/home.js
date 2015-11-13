@@ -5,7 +5,7 @@ Template.home.onCreated(function() {
 
 Template.home.onRendered(function() {
   this.autorun(() => {
-    Banners.find({}).fetch();
+    if (!this.subscriptionsReady()) return;
     Tracker.afterFlush(() => {
       this.$('.slider').slider();
     });
