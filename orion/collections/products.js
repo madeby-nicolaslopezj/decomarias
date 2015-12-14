@@ -108,21 +108,28 @@ Products.helpers({
     return Stores.findOne(this.storeId);
   },
   isInFavorites: function(userId) {
-    return Favorites.find({ product: this._id, userId: userId }).count() != 0;
+    return Favorites.find({ product: this._id, userId: userId }).count() !== 0;
   }
 });
 
-Products.initEasySearch(['name', 'description'], {
-  limit: 20,
-  use: 'mongo-db',
-  query: function(searchString, opts) {
-    var categories = _.pluck(Categories.find({ $or: [ { category: new RegExp(searchString, 'i') }, { subcategory: new RegExp(searchString, 'i') }, { type: new RegExp(searchString, 'i') } ] }, { fields: { _id: 1 } }).fetch(), '_id');
-    var query = EasySearch.getSearcher(this.use).defaultQuery(this, searchString);
 
-    if (_.isArray(query.$or) && _.isArray(categories) && categories) {
-      query.$or.push({ category: { $in: categories } });
+ProductsIndex = new EasySearch.Index({
+  collection: Products,
+  fields: ['name', 'description'],
+  engine: new EasySearch.MongoDB({
+    sort: () => ['score'],
+    selector: function(searchObject, options, aggregation) {
+      var searchString = searchObject.name;
+      var categories = _.pluck(Categories.find({ $or: [ { category: new RegExp(searchString, 'i') }, { subcategory: new RegExp(searchString, 'i') }, { type: new RegExp(searchString, 'i') } ] }, { fields: { _id: 1 } }).fetch(), '_id');
+      var selector = this.defaultConfiguration().selector(searchObject, options, aggregation);
+
+      if (_.isArray(selector.$or) && _.isArray(categories) && categories) {
+        selector.$or.push({ category: { $in: categories } });
+      }
+
+      selector.hidden = { $ne: true };
+
+      return selector;
     }
-
-    return query;
-  }
+  })
 });

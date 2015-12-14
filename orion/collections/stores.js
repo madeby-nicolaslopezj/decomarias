@@ -38,3 +38,16 @@ Stores.attachSchema(new SimpleSchema({
     label: 'Descuento'
   }
 }));
+
+StoresIndex = new EasySearch.Index({
+  collection: Stores,
+  fields: ['name', 'website', 'direction'],
+  engine: new EasySearch.MongoDB({
+    sort: () => ['score'],
+    selector: function(searchObject, options, aggregation) {
+      var selector = this.defaultConfiguration().selector(searchObject, options, aggregation);
+      selector.hidden = { $ne: true };
+      return selector;
+    }
+  })
+});

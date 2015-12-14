@@ -4,56 +4,83 @@
     <nav>
       <div class="nav-wrapper marias-green">
         <div class="input-field">
-          {{> esInput index="products" type="search" }}
-          <label for="search"><i class="mdi-action-search"></i></label>
-          <i class="mdi-navigation-close"></i>
+          {{! > EasySearch.Input indexes=searchIndexes attributes=inputAttrs timeout=500 }}
+          <input type="search" id="search">
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
         </div>
       </div>
     </nav>
   </div>
   <br>
-  {{# ifEsHasNoResults index="products" }}
-    <div class="center">
-      <br>
-      <p>
-        No se encontraron productos
-      </p>
-    </div>
-  {{/ ifEsHasNoResults}}
-  {{# ifEsIsSearching index="products" }}
+  {{# EasySearch.IfSearching indexes=searchIndexes logic="OR" }}
     {{> loading }}
-  {{/ifEsIsSearching}}
+  {{ else }}
+    {{# EasySearch.IfNoResults indexes=searchIndexes logic="AND" }}
+      <div class="center">
+        <br>
+        <p>
+          No se encontraron productos
+        </p>
+      </div>
+    {{/ EasySearch.IfNoResults }}
+  {{/ EasySearch.IfSearching }}
   <div class="row"><div class="col s12 m6 l3 example-width"></div></div>
   <div class="row masonry">
-    {{# esEach index="products" }}
-      <div class="col s12 m6 l3">
-        <a href="{{ pathFor 'products.show' }}">
-          <div class="card">
-            <div class="card-image waves-effect waves-block waves-light" style="height: {{ getImageHeight }}px; background-color: {{ image.info.backgroundColor }}">
-              <img data-original="{{ image.url }}">
+      {{# EasySearch.Each index=StoresIndex }}
+        <div class="col s12 m6 l3">
+          <a href="{{ pathFor 'stores.show' _id=__originalId }}">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light" style="height: {{ getImageHeight }}px; background-color: {{ logo.info.backgroundColor }}">
+                <img data-original="{{ logo.url }}">
+              </div>
+              <div class="card-content">
+                <span class="card-title grey-text text-darken-4">{{ name }}</span>
+                {{# if discount }}
+                <p style="margin-top: 10px">
+                  <span class="red-text">{{ discount }}% de descuento</span>
+                  <span class="grey-text text-darken-2">en la tienda nombrando a decomarías</span>
+                </p>
+                {{/ if }}
+              </div>
+              <div class="card-action">
+                <a href="{{ pathFor 'stores.show' _id=__originalId }}" class="marias-green-text-darken">Mas Información</a>
+              </div>
             </div>
-            <div class="card-content">
-              <span class="card-title grey-text text-darken-4">{{ name }}</span>
-              {{# if price }}
-                <p class="grey-text text-darken-4">${{ format price }}</p>
-              {{/ if }}
-              {{# if discount }}
-              <p style="margin-top: 10px">
-                <span class="red-text">{{ discount }}% de descuento</span>
-                <span class="grey-text text-darken-2">en la tienda nombrando a decomarías</span>
-              </p>
-              {{/ if }}
+          </a>
+        </div>
+      {{/ EasySearch.Each }}
+      {{# EasySearch.Each index=ProductsIndex }}
+        <div class="col s12 m6 l3">
+          <a href="{{ pathFor 'products.show' _id=__originalId }}">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light" style="height: {{ getImageHeight }}px; background-color: {{ image.info.backgroundColor }}">
+                <img data-original="{{ image.url }}">
+              </div>
+              <div class="card-content">
+                <span class="card-title grey-text text-darken-4">{{ name }}</span>
+                {{# if price }}
+                  <p class="grey-text text-darken-4">${{ format price }}</p>
+                {{/ if }}
+                {{# if discount }}
+                <p style="margin-top: 10px">
+                  <span class="red-text">{{ discount }}% de descuento</span>
+                  <span class="grey-text text-darken-2">en la tienda nombrando a decomarías</span>
+                </p>
+                {{/ if }}
+              </div>
+              <div class="card-action">
+                <a href="{{ pathFor 'products.show' _id=__originalId }}" class="marias-green-text-darken">Mas Información</a>
+              </div>
             </div>
-            <div class="card-action">
-              <a href="{{ pathFor 'products.show' }}" class="marias-green-text-darken">Mas Información</a>
-            </div>
-          </div>
-        </a>
-      </div>
-    {{/ esEach }}
+          </a>
+        </div>
+      {{/ EasySearch.Each }}
   </div>
-  <div class="center">
-    {{> esLoadMoreButton index="products" class="btn" content="Cargar Mas" }}
+  <div class="container center">
+    <p>
+      {{> EasySearch.LoadMore index=ProductsIndex attributes=btnAttrs content="Cargar Mas" count=50 }}
+    </p>
     <br>
   </div>
 </template>

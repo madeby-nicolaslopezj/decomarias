@@ -7,154 +7,162 @@
     -->
     <div class="section">
       <div class="container">
-        {{# with product }}
-          <a href="#" class="btn left back-btn"><i class="material-icons">arrow_back</i></a>
-          <h1 class="page-title">
-            {{ name }}
-          </h1>
-          <div class="row">
-            <div class="col s12 m8">
-              <img class="product-main-image responsive-img materialboxed" src="{{ image.url }}">
-              <br>
-              <div class="row">
-                {{# if image1 }}
-                  <div class="col s3">
-                    <img class="z-depth-1 responsive-img materialboxed" src="{{ image1.url }}">
-                  </div>
-                {{/ if }}
-                {{# if image2 }}
-                  <div class="col s3">
-                    <img class="z-depth-1 responsive-img materialboxed" src="{{ image2.url }}">
-                  </div>
-                {{/ if }}
-                {{# if image3 }}
-                  <div class="col s3">
-                    <img class="z-depth-1 responsive-img materialboxed" src="{{ image3.url }}">
-                  </div>
-                {{/ if }}
-                {{# if image4 }}
-                  <div class="col s3">
-                    <img class="z-depth-1 responsive-img materialboxed" src="{{ image4.url }}">
-                  </div>
-                {{/ if }}
-              </div>
-
-              <div class="row">
-                <div class="col s12">
-                  <a class='dropdown-button btn' href='#' data-activates='dropdown-add-to-project'>
-                    <i class="mdi-av-playlist-add left"></i>
-                    Agregar a Proyecto
-                  </a>
-                  <ul id='dropdown-add-to-project' class='dropdown-content'>
-                    {{# each currentUser.projects }}
-                      {{# unless hasProduct ../_id }}
-                        <li><a href="#" class="btn-add-to-project">{{ name }}</a></li>
-                      {{/ unless }}
-                    {{/ each }}
-                    <li class="divider"></li>
-                    <li><a href="{{ pathFor 'collections.projects.create' }}">Crear Proyecto</a></li>
-                  </ul>
-
-                  {{# if isInFavorites currentUser._id }}
-                    <a class='btn remove-from-favorites-btn red' href='#'>
-                      <i class="mdi-action-favorite left"></i>
-                      Remover de mis favoritos
-                    </a>
-                  {{ else }}
-                    <a class='btn add-to-favorites-btn red' href='#'>
-                      <i class="mdi-action-favorite left"></i>
-                      Agregar a mis favoritos
-                    </a>
+        {{# if Template.subscriptionsReady }}
+          {{# with product }}
+            <a href="#" class="btn left back-btn"><i class="material-icons">arrow_back</i></a>
+            <h1 class="page-title">
+              {{ name }}
+            </h1>
+            <div class="row">
+              <div class="col s12 m8">
+                <img class="product-main-image responsive-img materialboxed" src="{{ image.url }}">
+                <br>
+                <div class="row">
+                  {{# if image1 }}
+                    <div class="col s3">
+                      <img class="z-depth-1 responsive-img materialboxed" src="{{ image1.url }}">
+                    </div>
+                  {{/ if }}
+                  {{# if image2 }}
+                    <div class="col s3">
+                      <img class="z-depth-1 responsive-img materialboxed" src="{{ image2.url }}">
+                    </div>
+                  {{/ if }}
+                  {{# if image3 }}
+                    <div class="col s3">
+                      <img class="z-depth-1 responsive-img materialboxed" src="{{ image3.url }}">
+                    </div>
+                  {{/ if }}
+                  {{# if image4 }}
+                    <div class="col s3">
+                      <img class="z-depth-1 responsive-img materialboxed" src="{{ image4.url }}">
+                    </div>
                   {{/ if }}
                 </div>
-              </div>
-            </div>
-            <div class="col s12 m4">
-              {{# if price }}
-                <h4>${{ format price }}</h4>
-              {{/ if }}
-              <p>{{ description }}</p>
 
-              <p class="description-with-icon">
-                <i class="mdi-image-straighten"></i>
-                {{ dimensions }}
-              </p>
-
-              <p class="description-with-icon">
-                <i class="mdi-maps-layers"></i>
-                {{ material }}
-              </p>
-
-              <div class="divider"></div>
-              {{# with store }}
-                <h5>
-                  <a class="grey-text text-darken-4" href="{{ pathFor 'stores.show' }}">
-                    {{ name }}
-                  </a>
-                </h5>
-
-                {{# if discount }}
-                <p style="margin-top: 10px">
-                  <span class="red-text">{{ discount }}% de descuento</span>
-                  <span class="grey-text text-darken-2">en la tienda nombrando a decomarías</span>
-                </p>
-                {{/ if }}
-
-                <p class="description-with-icon">
-                  <i class="mdi-communication-phone"></i>
-                  {{ phone }}
-                </p>
-                <p class="description-with-icon">
-                  <i class="mdi-communication-email"></i>
-                  {{ email }}
-                </p>
-                <p class="description-with-icon">
-                  <i class="mdi-maps-store-mall-directory"></i>
-                  {{ direction }}
-                </p>
-                {{# if website }}
-                  <p class="description-with-icon">
-                    <i class="mdi-social-public"></i>
-                    <a href="{{ website }}" target="_blank">
-                      {{ website }}
+                <div class="row">
+                  <div class="col s12">
+                    <a class='dropdown-button btn' href='#' data-activates='dropdown-add-to-project'>
+                      <i class="mdi-av-playlist-add left"></i>
+                      Agregar a Proyecto
                     </a>
-                  </p>
+                    <ul id='dropdown-add-to-project' class='dropdown-content'>
+                      {{# each currentUser.projects }}
+                        {{# unless hasProduct ../_id }}
+                          <li><a href="#" class="btn-add-to-project">{{ name }}</a></li>
+                        {{/ unless }}
+                      {{/ each }}
+                      <li class="divider"></li>
+                      <li><a href="{{ pathFor 'collections.projects.create' }}">Crear Proyecto</a></li>
+                    </ul>
+
+                    {{# if isInFavorites currentUser._id }}
+                      <a class='btn remove-from-favorites-btn red' href='#'>
+                        <i class="mdi-action-favorite left"></i>
+                        Remover de mis favoritos
+                      </a>
+                    {{ else }}
+                      <a class='btn add-to-favorites-btn red' href='#'>
+                        <i class="mdi-action-favorite left"></i>
+                        Agregar a mis favoritos
+                      </a>
+                    {{/ if }}
+                  </div>
+                </div>
+              </div>
+              <div class="col s12 m4">
+                {{# if price }}
+                  <h4>${{ format price }}</h4>
                 {{/ if }}
-                <p>
-                  <a class="marias-green-text-darken" href="{{ pathFor 'stores.show' }}">
-                    Ver más productos de esta tienda
-                  </a>
+                <p>{{ description }}</p>
+
+                <p class="description-with-icon">
+                  <i class="mdi-image-straighten"></i>
+                  {{ dimensions }}
                 </p>
 
-              {{/ with }}
-              {{# each currentUser.projects }}
-                {{# if hasProduct ../_id }}
-                  <div class="divider"></div>
+                <p class="description-with-icon">
+                  <i class="mdi-maps-layers"></i>
+                  {{ material }}
+                </p>
+
+                <div class="divider"></div>
+                {{# with store }}
                   <h5>
-                    <a class="grey-text text-darken-4" href="{{ pathFor 'collections.projects.show' }}">
+                    <a class="grey-text text-darken-4" href="{{ pathFor 'stores.show' }}">
                       {{ name }}
                     </a>
                   </h5>
-                  <p>
-                    {{ numberOfProducts }}
+
+                  {{# if discount }}
+                  <p style="margin-top: 10px">
+                    <span class="red-text">{{ discount }}% de descuento</span>
+                    <span class="grey-text text-darken-2">en la tienda nombrando a decomarías</span>
                   </p>
-                  {{# if budget }}
+                  {{/ if }}
+
+                  <p class="description-with-icon">
+                    <i class="mdi-communication-phone"></i>
+                    {{ phone }}
+                  </p>
+                  <p class="description-with-icon">
+                    <i class="mdi-communication-email"></i>
+                    {{ email }}
+                  </p>
+                  <p class="description-with-icon">
+                    <i class="mdi-maps-store-mall-directory"></i>
+                    {{ direction }}
+                  </p>
+                  {{# if website }}
                     <p class="description-with-icon">
-                      <i class="mdi-editor-attach-money"></i>
-                      {{ format cost }} / {{ format budget }}
-                    </p>
-                  {{ else }}
-                    <p class="description-with-icon">
-                      <i class="mdi-editor-attach-money"></i>
-                      {{ format cost }}
+                      <i class="mdi-social-public"></i>
+                      <a href="{{ website }}" target="_blank">
+                        {{ website }}
+                      </a>
                     </p>
                   {{/ if }}
-                {{/ if }}
-              {{/ each }}
-            </div>
+                  <p>
+                    <a class="marias-green-text-darken" href="{{ pathFor 'stores.show' }}">
+                      Ver más productos de esta tienda
+                    </a>
+                  </p>
 
-          </div>
-        {{/ with }}
+                {{/ with }}
+                {{# each currentUser.projects }}
+                  {{# if hasProduct ../_id }}
+                    <div class="divider"></div>
+                    <h5>
+                      <a class="grey-text text-darken-4" href="{{ pathFor 'collections.projects.show' }}">
+                        {{ name }}
+                      </a>
+                    </h5>
+                    <p>
+                      {{ numberOfProducts }}
+                    </p>
+                    {{# if budget }}
+                      <p class="description-with-icon">
+                        <i class="mdi-editor-attach-money"></i>
+                        {{ format cost }} / {{ format budget }}
+                      </p>
+                    {{ else }}
+                      <p class="description-with-icon">
+                        <i class="mdi-editor-attach-money"></i>
+                        {{ format cost }}
+                      </p>
+                    {{/ if }}
+                  {{/ if }}
+                {{/ each }}
+              </div>
+
+            </div>
+          {{ else }}
+            <p>
+              Producto no encontrado
+            </p>
+          {{/ with }}
+        {{ else }}
+          {{> loading }}
+        {{/ if }}
       </div>
     </div>
   </div>

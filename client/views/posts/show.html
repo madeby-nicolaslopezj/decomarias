@@ -2,7 +2,7 @@
   {{# with post }}
     <div class="container posts-show">
       <div class="row">
-        <div class="col s12 l8 offset-l2">
+        <div class="col s12 l8 push-l2">
           <h1 class="page-title">{{ title }}</h1>
           <p class="caption">{{ caption }}</p>
           <p class="center">
@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-  {{ else }}  
+  {{ else }}
     {{> loading }}
   {{/ with }}
 </template>

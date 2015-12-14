@@ -1,5 +1,11 @@
+Template.productsShow.onCreated(function() {
+  this.autorun(() => {
+    this.subscribe('product', Router.current().params._id);
+  });
+});
+
+
 Template.productsShow.onRendered(function() {
-  this.subscribe('product', Router.current().params._id);
   this.autorun(function() {
     Products.findOne(Router.current().params._id);
     Tracker.afterFlush(function () {
@@ -7,8 +13,8 @@ Template.productsShow.onRendered(function() {
       //this.$('.parallax').parallax();
       $('.dropdown-button').dropdown();
     });
-  })
-})
+  });
+});
 
 Template.productsShow.helpers({
   product: function () {

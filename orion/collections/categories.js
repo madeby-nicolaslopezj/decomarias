@@ -2,15 +2,18 @@ Categories.attachSchema(new SimpleSchema({
   category: {
     type: String,
     label: 'Categoría',
-    allowedValues: _.pluck(topCategories, 'label')
+    allowedValues: _.pluck(topCategories, 'label'),
+    index: 1
   },
   subcategory: {
     type: String,
-    label: 'Sub-categoría'
+    label: 'Sub-categoría',
+    index: 1
   },
   type: {
     type: String,
-    label: 'Tipo'
+    label: 'Tipo',
+    index: 1
   }
 }));
 
